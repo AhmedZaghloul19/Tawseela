@@ -37,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0424366720362AC800590147 /* Tawseela.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tawseela.entitlements; sourceTree = "<group>"; };
 		04246A76202B9C6E00692641 /* Tawseela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tawseela.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04246A79202B9C6E00692641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04246A7E202B9C6E00692641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		04246A78202B9C6E00692641 /* Tawseela */ = {
 			isa = PBXGroup;
 			children = (
+				0424366720362AC800590147 /* Tawseela.entitlements */,
 				04246A79202B9C6E00692641 /* AppDelegate.swift */,
 				0426A527202C48330074795A /* Extensions.swift */,
 				0426A53F202C68B90074795A /* RequestManager.swift */,
@@ -232,6 +234,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -513,8 +520,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tawseela/Tawseela.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D8RJK2G44;
+				DEVELOPMENT_TEAM = 8F876M528R;
 				INFOPLIST_FILE = Tawseela/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XWady.Tawseela;
@@ -532,8 +540,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Tawseela/Tawseela.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3D8RJK2G44;
+				DEVELOPMENT_TEAM = 8F876M528R;
 				INFOPLIST_FILE = Tawseela/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XWady.Tawseela;
