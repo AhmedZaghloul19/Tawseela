@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionErrorView" customModule="ClinicSystem" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="zoM-7T-OnK"/>
+                <outlet property="errorLabel" destination="GA2-h4-DRa" id="t6I-Wo-vVh"/>
+                <outlet property="tryAgainBtn" destination="C5L-sT-964" id="Tg2-M1-JjE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="ConnectionErrorView" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYK-vj-fxV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vbl-KE-yuM">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logomdpi" translatesAutoresizingMaskIntoConstraints="NO" id="GLg-KU-srE">
+                            <rect key="frame" x="75" y="288" width="225" height="91"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-sT-964">
+                            <rect key="frame" x="137.5" y="443" width="100" height="20"/>
+                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
+                            <color key="tintColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="  Try Again" image="refresh-button">
+                                <color key="titleColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS ... There's a Trouble in Connection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-h4-DRa">
+                            <rect key="frame" x="67" y="387" width="241" height="40"/>
+                            <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
+                            <color key="textColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="GLg-KU-srE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="eYK-vj-fxV" secondAttribute="top" constant="16" id="4s9-Lk-MQi"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GA2-h4-DRa" secondAttribute="trailing" constant="16" id="AAS-gT-7E8"/>
+                        <constraint firstItem="GLg-KU-srE" firstAttribute="centerX" secondItem="eYK-vj-fxV" secondAttribute="centerX" id="G6i-dJ-gTY"/>
+                        <constraint firstItem="C5L-sT-964" firstAttribute="centerX" secondItem="eYK-vj-fxV" secondAttribute="centerX" id="YHQ-qX-2SP"/>
+                        <constraint firstItem="GLg-KU-srE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eYK-vj-fxV" secondAttribute="leading" constant="16" id="YdD-39-Ydj"/>
+                        <constraint firstAttribute="bottom" secondItem="Vbl-KE-yuM" secondAttribute="bottom" id="a5d-eN-LBh"/>
+                        <constraint firstItem="GLg-KU-srE" firstAttribute="width" secondItem="eYK-vj-fxV" secondAttribute="width" multiplier="0.6" id="bpO-e8-d9h"/>
+                        <constraint firstItem="Vbl-KE-yuM" firstAttribute="top" secondItem="eYK-vj-fxV" secondAttribute="top" id="d5k-Oq-BEb"/>
+                        <constraint firstAttribute="trailing" secondItem="Vbl-KE-yuM" secondAttribute="trailing" id="id7-xI-H2T"/>
+                        <constraint firstItem="C5L-sT-964" firstAttribute="top" secondItem="GA2-h4-DRa" secondAttribute="bottom" constant="16" id="lCs-Of-1zd"/>
+                        <constraint firstItem="Vbl-KE-yuM" firstAttribute="leading" secondItem="eYK-vj-fxV" secondAttribute="leading" id="lJk-3t-Kry"/>
+                        <constraint firstItem="GA2-h4-DRa" firstAttribute="top" secondItem="GLg-KU-srE" secondAttribute="bottom" constant="8" id="qNi-nf-b7r"/>
+                        <constraint firstItem="GLg-KU-srE" firstAttribute="centerY" secondItem="eYK-vj-fxV" secondAttribute="centerY" id="rLU-V6-jam"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="C5L-sT-964" secondAttribute="bottom" constant="44" id="set-td-yXK"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLg-KU-srE" secondAttribute="trailing" constant="16" id="vob-vM-5Az"/>
+                        <constraint firstItem="GA2-h4-DRa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eYK-vj-fxV" secondAttribute="leading" constant="16" id="wsw-vI-MPW"/>
+                        <constraint firstItem="GA2-h4-DRa" firstAttribute="centerX" secondItem="eYK-vj-fxV" secondAttribute="centerX" id="xtG-eq-wPX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eYK-vj-fxV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="eS3-A5-x3K"/>
+                <constraint firstItem="eYK-vj-fxV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="gSR-7w-2rS"/>
+                <constraint firstItem="eYK-vj-fxV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hyU-ve-mYv"/>
+                <constraint firstItem="eYK-vj-fxV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nOo-ph-5YD"/>
+            </constraints>
+            <point key="canvasLocation" x="54.5" y="48.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_logomdpi" width="234" height="91"/>
+        <image name="refresh-button" width="20" height="20"/>
+    </resources>
+</document>

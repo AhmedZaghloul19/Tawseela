@@ -8,20 +8,68 @@
 
 /* Begin PBXBuildFile section */
 		04246A7A202B9C6E00692641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04246A79202B9C6E00692641 /* AppDelegate.swift */; };
-		04246A7C202B9C6E00692641 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04246A7B202B9C6E00692641 /* ViewController.swift */; };
 		04246A7F202B9C6E00692641 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04246A7D202B9C6E00692641 /* Main.storyboard */; };
 		04246A81202B9C6E00692641 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04246A80202B9C6E00692641 /* Assets.xcassets */; };
 		04246A84202B9C6E00692641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04246A82202B9C6E00692641 /* LaunchScreen.storyboard */; };
+		04246A8C202B9F0600692641 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04246A8B202B9F0600692641 /* LoginVC.swift */; };
+		0426A528202C48340074795A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A527202C48330074795A /* Extensions.swift */; };
+		0426A52E202C48580074795A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A52D202C48580074795A /* BaseViewController.swift */; };
+		0426A530202C49070074795A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0426A52F202C49070074795A /* GoogleService-Info.plist */; };
+		0426A532202C4D8E0074795A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A531202C4D8E0074795A /* User.swift */; };
+		0426A535202C504E0074795A /* ConnectionErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A533202C504E0074795A /* ConnectionErrorView.swift */; };
+		0426A536202C504E0074795A /* ConnectionErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0426A534202C504E0074795A /* ConnectionErrorView.xib */; };
+		0426A538202C52830074795A /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A537202C52830074795A /* UserRecord.swift */; };
+		0426A53A202C598B0074795A /* PlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A539202C598B0074795A /* PlacesVC.swift */; };
+		0426A53C202C5AD30074795A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53B202C5AD30074795A /* Place.swift */; };
+		0426A53E202C681A0074795A /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53D202C681A0074795A /* GooglePlace.swift */; };
+		0426A540202C68B90074795A /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53F202C68B90074795A /* RequestManager.swift */; };
+		0426D6CF202F970300FA4896 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426D6CE202F970300FA4896 /* CartVC.swift */; };
+		04277400202DCE280002F448 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042773FF202DCE280002F448 /* ProfileVC.swift */; };
+		04277402202DDB110002F448 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04277401202DDB100002F448 /* SideMenuVC.swift */; };
+		04277406202DDB220002F448 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04277404202DDB210002F448 /* SWRevealViewController.m */; };
+		04277409202E0FE80002F448 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04277408202E0FE80002F448 /* RatesVC.swift */; };
+		042818B020325FF100852E6D /* OrderRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042818AF20325FF100852E6D /* OrderRequestsVC.swift */; };
+		042818B2203265AE00852E6D /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042818B1203265AE00852E6D /* OrderRequest.swift */; };
+		0429B884202C9BA8000F8A0B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429B883202C9BA8000F8A0B /* Order.swift */; };
+		0429E442202D339000C4B992 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429E441202D339000C4B992 /* OrdersVC.swift */; };
+		042C38D8202E17DF00CF1F84 /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C38D7202E17DF00CF1F84 /* RatingCell.swift */; };
+		309F0819EC20FD8A3DF83A0B /* Pods_Tawseela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04246A76202B9C6E00692641 /* Tawseela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tawseela.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04246A79202B9C6E00692641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04246A7B202B9C6E00692641 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04246A7E202B9C6E00692641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04246A80202B9C6E00692641 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04246A83202B9C6E00692641 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04246A85202B9C6E00692641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04246A8B202B9F0600692641 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0426A527202C48330074795A /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0426A52D202C48580074795A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0426A52F202C49070074795A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0426A531202C4D8E0074795A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0426A533202C504E0074795A /* ConnectionErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionErrorView.swift; sourceTree = "<group>"; };
+		0426A534202C504E0074795A /* ConnectionErrorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionErrorView.xib; sourceTree = "<group>"; };
+		0426A537202C52830074795A /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
+		0426A539202C598B0074795A /* PlacesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesVC.swift; sourceTree = "<group>"; };
+		0426A53B202C5AD30074795A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		0426A53D202C681A0074795A /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		0426A53F202C68B90074795A /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		0426D6CE202F970300FA4896 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
+		042773FF202DCE280002F448 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		04277401202DDB100002F448 /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		04277403202DDB200002F448 /* Tawseela-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tawseela-Bridging-Header.h"; sourceTree = "<group>"; };
+		04277404202DDB210002F448 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		04277405202DDB220002F448 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		04277408202E0FE80002F448 /* RatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVC.swift; sourceTree = "<group>"; };
+		042818AF20325FF100852E6D /* OrderRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestsVC.swift; sourceTree = "<group>"; };
+		042818B1203265AE00852E6D /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		0429B883202C9BA8000F8A0B /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		0429E441202D339000C4B992 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		042C38D7202E17DF00CF1F84 /* RatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
+		31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tawseela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D172F65875776527E25DC98 /* Pods-Tawseela.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.release.xcconfig"; sourceTree = "<group>"; };
+		5511D63B243FB45AA186EA59 /* Pods-Tawseela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				309F0819EC20FD8A3DF83A0B /* Pods_Tawseela.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +89,8 @@
 			children = (
 				04246A78202B9C6E00692641 /* Tawseela */,
 				04246A77202B9C6E00692641 /* Products */,
+				E4229E5C172D58C0247AF442 /* Pods */,
+				28A34D3C6F5A6C7F159364EF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +106,93 @@
 			isa = PBXGroup;
 			children = (
 				04246A79202B9C6E00692641 /* AppDelegate.swift */,
-				04246A7B202B9C6E00692641 /* ViewController.swift */,
+				0426A527202C48330074795A /* Extensions.swift */,
+				0426A53F202C68B90074795A /* RequestManager.swift */,
+				0429B886202CA0AF000F8A0B /* Models */,
+				0426D6D0202FB48800FA4896 /* Views */,
+				0429B887202CA0BC000F8A0B /* Controllers */,
 				04246A7D202B9C6E00692641 /* Main.storyboard */,
 				04246A80202B9C6E00692641 /* Assets.xcassets */,
 				04246A82202B9C6E00692641 /* LaunchScreen.storyboard */,
 				04246A85202B9C6E00692641 /* Info.plist */,
+				0426A52F202C49070074795A /* GoogleService-Info.plist */,
 			);
 			path = Tawseela;
+			sourceTree = "<group>";
+		};
+		0426D6D0202FB48800FA4896 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				042C38D7202E17DF00CF1F84 /* RatingCell.swift */,
+				0429B885202CA098000F8A0B /* ConnectionErrorView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04277407202DDB3B0002F448 /* SWRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				04277405202DDB220002F448 /* SWRevealViewController.h */,
+				04277404202DDB210002F448 /* SWRevealViewController.m */,
+			);
+			path = SWRevealController;
+			sourceTree = "<group>";
+		};
+		0429B885202CA098000F8A0B /* ConnectionErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				0426A533202C504E0074795A /* ConnectionErrorView.swift */,
+				0426A534202C504E0074795A /* ConnectionErrorView.xib */,
+			);
+			path = ConnectionErrorView;
+			sourceTree = "<group>";
+		};
+		0429B886202CA0AF000F8A0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0426A537202C52830074795A /* UserRecord.swift */,
+				0426A531202C4D8E0074795A /* User.swift */,
+				0426A53B202C5AD30074795A /* Place.swift */,
+				0426A53D202C681A0074795A /* GooglePlace.swift */,
+				0429B883202C9BA8000F8A0B /* Order.swift */,
+				042818B1203265AE00852E6D /* OrderRequest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0429B887202CA0BC000F8A0B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04277407202DDB3B0002F448 /* SWRevealController */,
+				04277401202DDB100002F448 /* SideMenuVC.swift */,
+				0426A52D202C48580074795A /* BaseViewController.swift */,
+				04246A8B202B9F0600692641 /* LoginVC.swift */,
+				0426A539202C598B0074795A /* PlacesVC.swift */,
+				0429E441202D339000C4B992 /* OrdersVC.swift */,
+				042818AF20325FF100852E6D /* OrderRequestsVC.swift */,
+				042773FF202DCE280002F448 /* ProfileVC.swift */,
+				04277408202E0FE80002F448 /* RatesVC.swift */,
+				0426D6CE202F970300FA4896 /* CartVC.swift */,
+				04277403202DDB200002F448 /* Tawseela-Bridging-Header.h */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		28A34D3C6F5A6C7F159364EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4229E5C172D58C0247AF442 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5511D63B243FB45AA186EA59 /* Pods-Tawseela.debug.xcconfig */,
+				3D172F65875776527E25DC98 /* Pods-Tawseela.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04246A88202B9C6E00692641 /* Build configuration list for PBXNativeTarget "Tawseela" */;
 			buildPhases = (
+				569349DE788CA26450E7F67D /* [CP] Check Pods Manifest.lock */,
 				04246A72202B9C6E00692641 /* Sources */,
 				04246A73202B9C6E00692641 /* Frameworks */,
 				04246A74202B9C6E00692641 /* Resources */,
+				ED79E99FC2D950CC8ECCE297 /* [CP] Embed Pods Frameworks */,
+				D60206CC056D5E08F35F5242 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +230,7 @@
 				TargetAttributes = {
 					04246A75202B9C6E00692641 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,7 +258,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0426A536202C504E0074795A /* ConnectionErrorView.xib in Resources */,
 				04246A84202B9C6E00692641 /* LaunchScreen.storyboard in Resources */,
+				0426A530202C49070074795A /* GoogleService-Info.plist in Resources */,
 				04246A81202B9C6E00692641 /* Assets.xcassets in Resources */,
 				04246A7F202B9C6E00692641 /* Main.storyboard in Resources */,
 			);
@@ -131,13 +268,113 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		569349DE788CA26450E7F67D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tawseela-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D60206CC056D5E08F35F5242 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED79E99FC2D950CC8ECCE297 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04246A72202B9C6E00692641 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04246A7C202B9C6E00692641 /* ViewController.swift in Sources */,
+				04277409202E0FE80002F448 /* RatesVC.swift in Sources */,
+				042C38D8202E17DF00CF1F84 /* RatingCell.swift in Sources */,
+				04277400202DCE280002F448 /* ProfileVC.swift in Sources */,
+				0426A538202C52830074795A /* UserRecord.swift in Sources */,
+				0426A53E202C681A0074795A /* GooglePlace.swift in Sources */,
+				0426A540202C68B90074795A /* RequestManager.swift in Sources */,
+				04246A8C202B9F0600692641 /* LoginVC.swift in Sources */,
+				042818B2203265AE00852E6D /* OrderRequest.swift in Sources */,
+				0426A53A202C598B0074795A /* PlacesVC.swift in Sources */,
+				0426A528202C48340074795A /* Extensions.swift in Sources */,
+				042818B020325FF100852E6D /* OrderRequestsVC.swift in Sources */,
 				04246A7A202B9C6E00692641 /* AppDelegate.swift in Sources */,
+				0426A52E202C48580074795A /* BaseViewController.swift in Sources */,
+				0426A535202C504E0074795A /* ConnectionErrorView.swift in Sources */,
+				04277406202DDB220002F448 /* SWRevealViewController.m in Sources */,
+				0429B884202C9BA8000F8A0B /* Order.swift in Sources */,
+				0429E442202D339000C4B992 /* OrdersVC.swift in Sources */,
+				0426A532202C4D8E0074795A /* User.swift in Sources */,
+				04277402202DDB110002F448 /* SideMenuVC.swift in Sources */,
+				0426D6CF202F970300FA4896 /* CartVC.swift in Sources */,
+				0426A53C202C5AD30074795A /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,14 +509,18 @@
 		};
 		04246A89202B9C6E00692641 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5511D63B243FB45AA186EA59 /* Pods-Tawseela.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8RJK2G44;
 				INFOPLIST_FILE = Tawseela/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XWady.Tawseela;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tawseela/Controllers/Tawseela-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -287,14 +528,17 @@
 		};
 		04246A8A202B9C6E00692641 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D172F65875776527E25DC98 /* Pods-Tawseela.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3D8RJK2G44;
 				INFOPLIST_FILE = Tawseela/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.XWady.Tawseela;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tawseela/Controllers/Tawseela-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
