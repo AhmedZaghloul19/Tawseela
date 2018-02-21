@@ -1,32 +1,32 @@
 //
-//  OrdersVC.swift
+//  NotificationsVC.swift
 //  Tawseela
 //
-//  Created by Ahmed Zaghloul on 2/9/18.
+//  Created by Ahmed Zaghloul on 2/17/18.
 //  Copyright © 2018 XWady. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
+class NotificationsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var tableView:UITableView!
-    
+    private lazy var usersRef: DatabaseReference = Database.database().reference().child("users")
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("orders")
     private var channelRefHandle: DatabaseHandle?
     var orders :[Order] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func getData() {
         super.getData()
         observeOrders()
     }
-
+    
     deinit {
         if let refHandle = channelRefHandle {
             channelRef.removeObserver(withHandle: refHandle)
@@ -40,16 +40,31 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
         channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in // 1
             self.activityIndicator.startAnimating()
             let channelData = snapshot.value as! Dictionary<String, AnyObject> // 2
-
-            if let userPhone = channelData["user_phone"] as! String!, userPhone.count > 0 { // 3
-                if userPhone == (CURRENT_USER?.mobile!)!{
+            
+            if let st = channelData["state"] as! String!, st.count > 0 { // 3
+                let state = State(rawValue: st)
+                if state == .RequestInProgress{
                     let order = Order(data: snapshot.value as AnyObject)
                     order.id = snapshot.key
-                    self.orders.append(order)
+                    self.usersRef.child(order.user_phone!).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        let user = User(data: userSnapshot.value as AnyObject)
+                        var userRatesSummation:Double = 0
+                        for rate in user.user_rates {
+                            userRatesSummation += rate.rate!
+                        }
+                        let avgUserRates = userRatesSummation / Double(user.user_rates.count)
+                        user.usersRateAvg = avgUserRates > 0 ? avgUserRates : 5
+                        order.requestedUser = user
+                        self.orders.append(order)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    })
+
                 }
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
-                    self.tableView.reloadData()
+//                    self.tableView.reloadData()
                 }
             } else {
                 DispatchQueue.main.async {
@@ -60,23 +75,9 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let order = sender as? Order {
-            if order.state == .RequestInProgress {
-                if let vc = segue.destination as? OrderRequestsVC {
-                    vc.orderID = order.id!
-                }
-            }else if order.state == .Done {
-                if let vc = segue.destination as? RequestsDetailsVC {
-                    vc.order = order
-                }
-            }else{
-                if let vc = segue.destination as? RequestProgressVC {
-                    vc.order = order
-                }
-            }
+        if let order = sender as? Order , let vc = segue.destination as? RequestsDetailsVC{
+            vc.order = order
         }
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,20 +85,15 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = orders[indexPath.row].state!.rawValue
-        cell.detailTextLabel?.text = orders[indexPath.row].date!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RatingCell
+        cell.titleLabel.text = orders[indexPath.row].requestedUser?.name!
+        cell.subtitleLabel.text = orders[indexPath.row].date!
+        cell.ratingView.rating = (orders[indexPath.row].requestedUser?.usersRateAvg!)!
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if orders[indexPath.row].state == .RequestInProgress {
-            self.performSegue(withIdentifier: "showRequests", sender: orders[indexPath.row])
-        }else if orders[indexPath.row].state == .Done {
-            self.performSegue(withIdentifier: "OrderDetails", sender: orders[indexPath.row])
-        }else{
-            self.performSegue(withIdentifier: "OrderProgress", sender: orders[indexPath.row])
-        }
+        self.performSegue(withIdentifier: "RequestDetails", sender: orders[indexPath.row])
     }
 }

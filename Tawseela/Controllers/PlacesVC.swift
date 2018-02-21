@@ -66,13 +66,15 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
                 if !error{
                     DispatchQueue.main.async {//33.8670522,151.1957362
                         self.googlePlaces = googlePlaces!
-                        self.activityIndicator.stopAnimating()
                         self.tableView.reloadData()
                     }
                 }else{
                     DispatchQueue.main.async {
                         self.errorView.isHidden = false
                     }
+                }
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                 }
         })
     }

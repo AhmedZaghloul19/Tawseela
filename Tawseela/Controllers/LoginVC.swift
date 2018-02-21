@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftValidator
+import FirebaseMessaging
 
 class LoginVC: BaseViewController ,ValidationDelegate{
 
@@ -40,9 +41,11 @@ class LoginVC: BaseViewController ,ValidationDelegate{
                 DispatchQueue.main.async {
                     CURRENT_USER = user
                     cacheUserData()
+
                     let firbaseToken = Messaging.messaging().fcmToken
                     self.channelRef.child(phone).child("token").setValue(firbaseToken)
-                    self.performSegue(withIdentifier: "CustomerRoot", sender: nil)
+                    let identifier = CURRENT_USER?.user?.type! == .Customer ? "CustomerRoot" : "DriverRoot"
+                    self.performSegue(withIdentifier: identifier, sender: nil)
                     return
                 }
             }else{
@@ -88,12 +91,13 @@ class LoginVC: BaseViewController ,ValidationDelegate{
                     self.channelRef.child(self.mobileTextfield.text!).child("name").setValue(self.usernameTextfield.text!)
 
                         let firbaseToken = Messaging.messaging().fcmToken
-                    self.channelRef.child(self.mobileTextfield.text!).child("token").setValue(firbaseToken)
+                        self.channelRef.child(self.mobileTextfield.text!).child("token").setValue(firbaseToken)
                         CURRENT_USER = UserRecord()
                         CURRENT_USER?.mobile = self.mobileTextfield.text!
                         CURRENT_USER?.user = User(id: "", name: self.usernameTextfield.text!, image: "", token: firbaseToken!, type: .Customer)
                         cacheUserData()
-                        self.performSegue(withIdentifier: "CustomerRoot", sender: nil)
+                        let identifier = CURRENT_USER?.user?.type! == .Customer ? "CustomerRoot" : "DriverRoot"
+                        self.performSegue(withIdentifier: identifier, sender: nil)
 
                     }else{
                         self.verificationCodeStage()

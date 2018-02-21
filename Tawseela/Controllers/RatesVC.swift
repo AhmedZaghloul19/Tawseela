@@ -16,16 +16,24 @@ class RatesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     private lazy var ratesRef: DatabaseReference = Database.database().reference().child("users")
     private var channelRefHandle: DatabaseHandle?
     var rates :[Rate] = []
-
+    var ratesType = "user_rate"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.estimatedRowHeight = 80
     }
     
+    
+    deinit {
+        if let refHandle = channelRefHandle {
+            ratesRef.removeObserver(withHandle: refHandle)
+        }
+    }
+    
     override func getData() {
         super.getData()
-        self.ratesRef.child((CURRENT_USER?.mobile!)!).child("user_rate").observe(.value, with: { (snap) in
+        channelRefHandle = self.ratesRef.child((CURRENT_USER?.mobile!)!).child(ratesType).observe(.value, with: { (snap) in
             self.activityIndicator.startAnimating()
             for rateChild in snap.children {
                 let snp = rateChild as! DataSnapshot

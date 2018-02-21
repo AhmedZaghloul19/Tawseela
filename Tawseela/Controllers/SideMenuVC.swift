@@ -1,6 +1,6 @@
 //
 //  SideMenuVC.swift
-//  Obesity Egypt
+//  Tawseela
 //
 //  Created by Ahmed on 8/20/17.
 //  Copyright © 2017 RKAnjel. All rights reserved.
@@ -27,8 +27,7 @@ class SideMenuVC: UITableViewController {
     }
     
     func setData(){
-        userTitleLabel.text = "\((CURRENT_USER?.user?.name!)!)"
-        
+        self.userTitleLabel.text = "\((CURRENT_USER?.user?.name!)!)"
         let url = URL(string: SERVICE_URL_PREFIX + (CURRENT_USER?.user?.image!)!)
         self.userImageView.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_avatarmdpi"), options: [.transition(ImageTransition.fade(1))], progressBlock: { receivedSize, totalSize in
         }, completionHandler: { image, error, cacheType, imageURL in
@@ -54,13 +53,7 @@ class SideMenuVC: UITableViewController {
             return true
         }else{
             userData.removeObject(forKey: "mobile")
-//            RequestManager.defaultManager.logout(compilition: { (error, recError) in
-//                print(error)
-//                if !error{
-//                }else{
-//                    self.showAlertWithTitle(title: "خطأ", message: "حدث خطأ")
-//                }
-//            })
+            userData.removeObject(forKey: "cart_orders")
             return true
         }
     }
@@ -75,7 +68,7 @@ class SideMenuVC: UITableViewController {
         print(textToShare)
         if let myWebsite = URL(string: "http://itunes.apple.com/app/1323514111") {
             
-            let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "logomessageus")] as [Any]
+            let objectsToShare = [textToShare, myWebsite, image ?? #imageLiteral(resourceName: "logo")] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             
             //Excluded Activities

@@ -1,6 +1,6 @@
 //
 //  BaseViewController.swift
-//  CafeSupreme
+//  RKAnjel
 //
 //  Created by Ahmed on 8/22/17.
 //  Copyright © 2017 RKAnjel. All rights reserved.
@@ -11,17 +11,13 @@ import UIKit
 /**
  Base View Controller For All Controllers of the app.
  ````
- @IBOutlet weak var titleLabel: UILabel!
  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
- @IBOutlet weak var navigationBarView:UIView!
- 
  lazy var errorView = ConnectionErrorView()
  
  ````
  
- - titleLabel: Outlet connected to a title UIlabel
  - activityIndicator: Outlet connected to an activity indicator when loading.
- - navigationBarView: Outlet connected to a navigation bar.
+ - errorView: View for the connection error faults.
  
  ## Important Notes ##
  This controller is the base view controller For The APP.

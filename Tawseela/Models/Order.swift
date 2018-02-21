@@ -19,8 +19,9 @@ class Order  {
     public var order_details : [OrderDetails] = []
     public var pay : String?
     public var price : String?
-    public var state : String?
+    public var state : State?
     public var user_phone : String?
+    public var requestedUser:User?
     
     init(data:AnyObject){
         if let data = data as? NSDictionary {
@@ -32,7 +33,8 @@ class Order  {
             }
             self.driver_phone = data.getValueForKey(key: "driver_phone", callback: "")
             self.price = data.getValueForKey(key: "price", callback: "")
-            self.state = data.getValueForKey(key: "state", callback: "")
+            print(data.getValueForKey(key: "state", callback: "جاري الطلب"))
+            self.state = State(rawValue: data.getValueForKey(key: "state", callback: "جاري الطلب"))
             self.user_phone = data.getValueForKey(key: "user_phone", callback: "")
 //            self.order_details = OrderDetails(data: data.getValueForKey(key: "order_details", callback: [:]) as AnyObject)
             self.del_lat = data.getValueForKey(key: "del_lat", callback: 0.0)

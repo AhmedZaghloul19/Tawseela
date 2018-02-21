@@ -15,7 +15,12 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var tableView:UITableView!
     
-    var destinationCoordinate:CLLocationCoordinate2D!
+    var destinationCoordinate:CLLocationCoordinate2D!{
+        didSet{
+            self.getAddressFromLocation(center: self.destinationCoordinate)
+        }
+    }
+    var destinationAddress:String = ""
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("orders")
 
     override func viewDidLoad() {
@@ -74,14 +79,28 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             }
         }else{
             let newOrderContent:[String : Any] = [
-                "date": true,
-                "del_address": "Test",
-                "del_lat":12.3124,
-                "del_lng":12.3124,
+                "date": Date().getStringFromDate(),
+                "del_address": destinationAddress,
+                "del_lat":destinationCoordinate.latitude,
+                "del_lng":destinationCoordinate.longitude,
                 "state": "جاري الطلب",
                 "user_phone": (CURRENT_USER?.mobile!)!,
                 ]
-            self.channelRef.childByAutoId().setValue(newOrderContent)
+            let newOrderRef = self.channelRef.childByAutoId()
+            newOrderRef.setValue(newOrderContent)
+            
+            for order in CART_ORDERS {
+                let orderDetailsContent:[String:Any] = ["address":order.address!,
+                    "details":order.details!,
+                    "lat":order.lat!,
+                    "lng":order.lng!,
+                    "name":order.name!,
+                    ]
+                newOrderRef.child("order_details").childByAutoId().setValue(orderDetailsContent)
+            }
+            CART_ORDERS.removeAll()
+            userData.removeObject(forKey: "cart_orders")
+            self.tableView.reloadData()
             self.showAlertWithTitle(title: "Success", message: "Your Order Request has been sent successfully")
         }
     }
@@ -108,7 +127,6 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
                 
                 if let place = place {
                     self.destinationCoordinate = place.coordinate
-
                 } else {
                     print("No place selected")
                     
@@ -117,4 +135,33 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func getAddressFromLocation(center:CLLocationCoordinate2D){
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        
+        let ceo: CLGeocoder = CLGeocoder()
+        var addressString = ""
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+            {(placemarks, error) in
+                if (error != nil)
+                {
+                    print("reverse geodcode fail: \(error!.localizedDescription)")
+                }
+                let pm = placemarks! as [CLPlacemark]
+                
+                if pm.count > 0 {
+                    let pm = placemarks![0]
+                    if pm.subLocality != nil {
+                        addressString = addressString + pm.subLocality! + ", "
+                    }
+                    if pm.thoroughfare != nil {
+                        addressString = addressString + pm.thoroughfare! + ", "
+                    }
+                    if pm.locality != nil {
+                        addressString = addressString + pm.locality!
+                    }
+                    self.destinationAddress = (addressString)
+                }
+        })
+    }
 }

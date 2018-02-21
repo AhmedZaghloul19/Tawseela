@@ -9,12 +9,20 @@
 import UIKit
 import FloatRatingView
 
+protocol RequestDelegate {
+    func didConfirmedOn(request:Request)
+}
+
 class RatingCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel:UILabel!
     @IBOutlet weak var subtitleLabel:UILabel!
+    @IBOutlet weak var secondSubtitleLabel:UILabel!
     @IBOutlet weak var placeIcon:UIImageView!
     @IBOutlet weak var ratingView:FloatRatingView!
+    
+    var delegate:RequestDelegate?
+    var request:Request!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,4 +35,7 @@ class RatingCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func confirmRequestTapped() {
+        self.delegate?.didConfirmedOn(request: self.request)
+    }
 }

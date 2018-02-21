@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
+class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource,RequestDelegate{
     
     @IBOutlet weak var tableView:UITableView!
     
@@ -27,6 +27,7 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     override func getData() {
         super.getData()
+        self.activityIndicator.stopAnimating()
         observeOrders()
     }
     
@@ -59,12 +60,25 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
                 let req = Request(user_phone: snapshot.key, value: snapshot.value as? String,user:user,user_rate:avgUserRates > 0 ? avgUserRates : 5,driver_rate: avgdriverRates > 0 ? avgdriverRates : 5)
                 self.driver_offers.append(req)
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 }
             })
-            
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         })
+    }
+    
+    func didConfirmedOn(request: Request) {
+        let alert = UIAlertController(title: "Confirm Request", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            self.channelRef.child(self.orderID!).child("driver_phone").setValue(request.user_phone!)
+            self.channelRef.child(self.orderID!).child("state").setValue(State.Delivering.rawValue)
+            self.channelRef.child(self.orderID!).child("pay").setValue("no")
+            self.channelRef.child(self.orderID!).child("price").setValue(request.value!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: false)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +94,15 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         cell.placeIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_avatarmdpi"), options: [.transition(ImageTransition.fade(1))], progressBlock: { receivedSize, totalSize in
         }, completionHandler: { image, error, cacheType, imageURL in
         })
+        cell.request = driver_offers[indexPath.row]
+        cell.delegate = self
         return cell
     }
+    
+    @IBAction func cancelOrder(){
+        self.channelRef.child(orderID!).removeValue()
+        self.backTapped(nil)
+    }
+    
 }
 

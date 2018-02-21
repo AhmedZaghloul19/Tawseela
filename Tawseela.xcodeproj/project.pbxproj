@@ -23,6 +23,7 @@
 		0426A53C202C5AD30074795A /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53B202C5AD30074795A /* Place.swift */; };
 		0426A53E202C681A0074795A /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53D202C681A0074795A /* GooglePlace.swift */; };
 		0426A540202C68B90074795A /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426A53F202C68B90074795A /* RequestManager.swift */; };
+		0426D6042038DA1A003335CB /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426D6032038DA1A003335CB /* NotificationsVC.swift */; };
 		0426D6CF202F970300FA4896 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0426D6CE202F970300FA4896 /* CartVC.swift */; };
 		04277400202DCE280002F448 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042773FF202DCE280002F448 /* ProfileVC.swift */; };
 		04277402202DDB110002F448 /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04277401202DDB100002F448 /* SideMenuVC.swift */; };
@@ -30,9 +31,14 @@
 		04277409202E0FE80002F448 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04277408202E0FE80002F448 /* RatesVC.swift */; };
 		042818B020325FF100852E6D /* OrderRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042818AF20325FF100852E6D /* OrderRequestsVC.swift */; };
 		042818B2203265AE00852E6D /* OrderRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042818B1203265AE00852E6D /* OrderRequest.swift */; };
+		04285AA4203B2590001BCCE2 /* DeliveriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04285AA3203B2590001BCCE2 /* DeliveriesVC.swift */; };
+		04291C1C203AEA3C00289355 /* RequestDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04291C1B203AEA3C00289355 /* RequestDetailsVC.swift */; };
 		0429B884202C9BA8000F8A0B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429B883202C9BA8000F8A0B /* Order.swift */; };
 		0429E442202D339000C4B992 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0429E441202D339000C4B992 /* OrdersVC.swift */; };
+		042B5F6B203C99C600139276 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B5F6A203C99C500139276 /* ChatViewController.swift */; };
+		042B5F6D203C9AD800139276 /* RequestProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B5F6C203C9AD800139276 /* RequestProgressVC.swift */; };
 		042C38D8202E17DF00CF1F84 /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C38D7202E17DF00CF1F84 /* RatingCell.swift */; };
+		045EDF30203723A000233E67 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EDF2F203723A000233E67 /* TabBarVC.swift */; };
 		309F0819EC20FD8A3DF83A0B /* Pods_Tawseela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +62,7 @@
 		0426A53B202C5AD30074795A /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		0426A53D202C681A0074795A /* GooglePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
 		0426A53F202C68B90074795A /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		0426D6032038DA1A003335CB /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		0426D6CE202F970300FA4896 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		042773FF202DCE280002F448 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		04277401202DDB100002F448 /* SideMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
@@ -65,9 +72,14 @@
 		04277408202E0FE80002F448 /* RatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVC.swift; sourceTree = "<group>"; };
 		042818AF20325FF100852E6D /* OrderRequestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequestsVC.swift; sourceTree = "<group>"; };
 		042818B1203265AE00852E6D /* OrderRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRequest.swift; sourceTree = "<group>"; };
+		04285AA3203B2590001BCCE2 /* DeliveriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesVC.swift; sourceTree = "<group>"; };
+		04291C1B203AEA3C00289355 /* RequestDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailsVC.swift; sourceTree = "<group>"; };
 		0429B883202C9BA8000F8A0B /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		0429E441202D339000C4B992 /* OrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		042B5F6A203C99C500139276 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		042B5F6C203C9AD800139276 /* RequestProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProgressVC.swift; sourceTree = "<group>"; };
 		042C38D7202E17DF00CF1F84 /* RatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
+		045EDF2F203723A000233E67 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tawseela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D172F65875776527E25DC98 /* Pods-Tawseela.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.release.xcconfig"; sourceTree = "<group>"; };
 		5511D63B243FB45AA186EA59 /* Pods-Tawseela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,14 +179,20 @@
 			children = (
 				04277407202DDB3B0002F448 /* SWRevealController */,
 				04277401202DDB100002F448 /* SideMenuVC.swift */,
+				045EDF2F203723A000233E67 /* TabBarVC.swift */,
 				0426A52D202C48580074795A /* BaseViewController.swift */,
 				04246A8B202B9F0600692641 /* LoginVC.swift */,
 				0426A539202C598B0074795A /* PlacesVC.swift */,
 				0429E441202D339000C4B992 /* OrdersVC.swift */,
+				04285AA3203B2590001BCCE2 /* DeliveriesVC.swift */,
 				042818AF20325FF100852E6D /* OrderRequestsVC.swift */,
 				042773FF202DCE280002F448 /* ProfileVC.swift */,
 				04277408202E0FE80002F448 /* RatesVC.swift */,
 				0426D6CE202F970300FA4896 /* CartVC.swift */,
+				0426D6032038DA1A003335CB /* NotificationsVC.swift */,
+				04291C1B203AEA3C00289355 /* RequestDetailsVC.swift */,
+				042B5F6A203C99C500139276 /* ChatViewController.swift */,
+				042B5F6C203C9AD800139276 /* RequestProgressVC.swift */,
 				04277403202DDB200002F448 /* Tawseela-Bridging-Header.h */,
 			);
 			path = Controllers;
@@ -321,6 +339,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -329,13 +348,13 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftValidator/SwiftValidator.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -344,7 +363,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftValidator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -369,11 +387,14 @@
 				0426A540202C68B90074795A /* RequestManager.swift in Sources */,
 				04246A8C202B9F0600692641 /* LoginVC.swift in Sources */,
 				042818B2203265AE00852E6D /* OrderRequest.swift in Sources */,
+				045EDF30203723A000233E67 /* TabBarVC.swift in Sources */,
+				04291C1C203AEA3C00289355 /* RequestDetailsVC.swift in Sources */,
 				0426A53A202C598B0074795A /* PlacesVC.swift in Sources */,
 				0426A528202C48340074795A /* Extensions.swift in Sources */,
 				042818B020325FF100852E6D /* OrderRequestsVC.swift in Sources */,
 				04246A7A202B9C6E00692641 /* AppDelegate.swift in Sources */,
 				0426A52E202C48580074795A /* BaseViewController.swift in Sources */,
+				042B5F6D203C9AD800139276 /* RequestProgressVC.swift in Sources */,
 				0426A535202C504E0074795A /* ConnectionErrorView.swift in Sources */,
 				04277406202DDB220002F448 /* SWRevealViewController.m in Sources */,
 				0429B884202C9BA8000F8A0B /* Order.swift in Sources */,
@@ -381,7 +402,10 @@
 				0426A532202C4D8E0074795A /* User.swift in Sources */,
 				04277402202DDB110002F448 /* SideMenuVC.swift in Sources */,
 				0426D6CF202F970300FA4896 /* CartVC.swift in Sources */,
+				042B5F6B203C99C600139276 /* ChatViewController.swift in Sources */,
+				04285AA4203B2590001BCCE2 /* DeliveriesVC.swift in Sources */,
 				0426A53C202C5AD30074795A /* Place.swift in Sources */,
+				0426D6042038DA1A003335CB /* NotificationsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

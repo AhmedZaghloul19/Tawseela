@@ -15,6 +15,7 @@ class User {
     var image : String?
     var user_rates:[Rate] = []
     var driver_rates:[Rate] = []
+    var usersRateAvg:Double?
     
     init(id: String, name: String, image: String,token:String,type:Role) {
         self.id = id

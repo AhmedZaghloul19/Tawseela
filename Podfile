@@ -16,7 +16,7 @@ target 'Tawseela' do
   pod 'GooglePlacePicker'
   
   pod 'JSQMessagesViewController'
-  pod 'RxSwift'
+  pod 'Alamofire'
   pod 'Localize-Swift'
   pod 'Kingfisher'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'

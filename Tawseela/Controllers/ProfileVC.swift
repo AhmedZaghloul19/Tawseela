@@ -13,9 +13,10 @@
  class ProfileVC: BaseViewController  {
     
     @IBOutlet weak var subtitlesLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameTextfield: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     var imagePicker = UIImagePickerController()
+    private lazy var channelRef: DatabaseReference = Database.database().reference().child("users")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@
     
     func setData() {
         DispatchQueue.main.async {
-            self.nameLabel.text = CURRENT_USER?.user?.name!
+            self.nameTextfield.text = CURRENT_USER?.user?.name!
             self.subtitlesLabel.text = "\((CURRENT_USER?.user?.type!)!)"
             
             let url = URL(string: URL_IMAGE_PREFIX + (CURRENT_USER?.user?.image!)!)
@@ -44,36 +45,92 @@
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? RatesVC {
+            vc.ratesType = "driver_rate"
+        }
+    }
+    
+    @IBAction func saveTapped() {
+        if !nameTextfield.text!.isEmpty{
+            self.activityIndicator.startAnimating()
+            channelRef.child((CURRENT_USER?.mobile!)!).child("name").setValue(nameTextfield.text!) { (error, ref) in
+                if error == nil {
+                    self.showAlertWithTitle(title: "Success", message: "Name Updated Successfully")
+                    CURRENT_USER?.user?.name = self.nameTextfield.text!
+                    userData.set((CURRENT_USER?.user?.name!)!, forKey: "name")
+                    DispatchQueue.main.async {
+                        self.nameTextfield.resignFirstResponder()
+                        self.activityIndicator.stopAnimating()
+                    }
+                }
+            }
+        }
+    }
  }
 
  //For Image Selection
  extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBAction func chooseImageTapped(_ sender: Any) {
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.navigationBar.tintColor = appColor
-        present(imagePicker, animated: true, completion: nil)
-    }
+    @IBAction func chooseImageTapped(_ sender:UIButton?) {
+        let picker = imagePicker
 
+        picker.allowsEditing = true
+        DispatchQueue.main.async {
+            let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            optionMenu.popoverPresentationController?.sourceView = self.navigationController?.navigationBar
+            let photoAction = UIAlertAction(title: "Camera Roll", style: .default, handler: { (action) in
+                picker.sourceType = UIImagePickerControllerSourceType.camera
+                picker.navigationBar.tintColor = appColor
+                self.present(picker, animated: true, completion: nil)
+            })
+            if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
+                optionMenu.addAction(photoAction)
+            }
+            let galleryAction = UIAlertAction(title: "Photo Gallery", style: .default, handler: { (action) in
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                picker.navigationBar.tintColor = appColor
+                self.present(picker, animated: true, completion: nil)
+            })
+            
+            optionMenu.addAction(galleryAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            optionMenu.addAction(cancelAction)
+            
+            optionMenu.view.tintColor = appColor
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            if let jpegData = pickedImage.jpeg {
+            if let _ = pickedImage.jpeg {
                 
-                let encodedImage = jpegData.base64EncodedString(options: .lineLength64Characters)
-                
-//                RequestManager.defaultManager.setImageForUser(image: encodedImage) { (error, recError) in
-//                    print(error)
-//                    if !error{
-//                        if recError?.code == .Success{
-//                            DispatchQueue.main.async {
-//                                self.userImageView.image = pickedImage
-//                            }
-//                        }
-//                    }
-//                }
-                
+                let imageUrl = info[UIImagePickerControllerImageURL] as? URL
+                self.activityIndicator.startAnimating()
+                RequestManager.defaultManager.uploadPicture(WithURL: imageUrl!, compilition: { (error) in
+                    if !error{
+                        let splitedName:String! = String(describing: imageUrl!.absoluteString.split(separator: "/").last!)
+                        self.channelRef.child((CURRENT_USER?.mobile!)!).child("logo").setValue(splitedName) { (error, ref) in
+                            if error == nil {
+                                self.showAlertWithTitle(title: "Success", message: "Image Updated Successfully")
+                                CURRENT_USER?.user?.image = splitedName
+                                userData.set(splitedName, forKey: "logo")
+                                DispatchQueue.main.async {
+                                    self.userImageView.image = pickedImage
+                                    self.nameTextfield.resignFirstResponder()
+                                }
+                            }
+                        }
+                    }else{
+                        self.showAlertWithTitle(title: "Failed", message: "Sorry, Failed to upload your image")
+                    }
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating()
+                    }
+                })
                 
             }else{
                 self.dismiss(animated: true, completion: {
@@ -92,4 +149,5 @@
     }
     
  }
+
 

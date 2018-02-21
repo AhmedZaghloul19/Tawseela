@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 let URL_IMAGE_PREFIX = "http://haseboty.com/Tawseela/"
-let SERVICE_URL_PREFIX = "https://www.rkanjel.com/clinicsystem/api/"
+let SERVICE_URL_PREFIX = "http://haseboty.com/Tawseela/"
 let ACCOUNT_ID = 1
 var GOOGLE_PLACES_API_KEY = "AIzaSyCTV_ohoqCYjpSfjtbt5WNbt0SsRAFrlek"
 
@@ -26,20 +26,19 @@ var CART_ORDERS:[OrderDetails] = [] {
         saveOrders()
     }
 }
-//67 189 167
-let appColor = UIColor(red: 67/255, green: 189/255, blue: 167/255, alpha: 1.0)
+
+let appColor = UIColor(red: 238/255, green: 8/255, blue: 78/255, alpha: 1.0)
 
 enum Gender:Int{
     case Male = 0
     case Female = 1
 }
 
-enum Status:Int{
-    case Pending = 0
-    case Approved = 1
-    case Cancelled = 2
-    case Attended = 3
-    case Missed = 4
+enum State:String{
+    case RequestInProgress = "جاري الطلب"
+    case Done = "تم التوصيل"
+    case Delivering = "جاري التوصيل"
+    case Other
 }
 
 enum Role:String{
@@ -68,7 +67,7 @@ extension UITableView {
 }
 
 func cacheUserData() {
-    userData.set(CURRENT_USER?.mobile!, forKey: "mobile")
+    userData.set((CURRENT_USER?.mobile!)!, forKey: "mobile")
     userData.set((CURRENT_USER?.user?.name!)!, forKey: "name")
     userData.set((CURRENT_USER?.user?.image!)!, forKey: "image")
     userData.set((CURRENT_USER?.user?.token!)!, forKey: "token")
@@ -98,7 +97,6 @@ func userAlreadyExist() -> Bool{
         CURRENT_USER = UserRecord()
         CURRENT_USER?.mobile = mobile
         CURRENT_USER?.user = User(id: "", name: userData.string(forKey: "name")!, image: userData.string(forKey: "image")!, token: userData.string(forKey: "token")!, type: Role(rawValue: userData.string(forKey: "role")!)!)
-        print(userData.string(forKey: "name"))
         return true
     }
     
@@ -187,7 +185,7 @@ enum VendingMachineError:Error {
 extension Date{
     func getStringFromDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
         return formatter.string(from: self as Date)
     }
     
