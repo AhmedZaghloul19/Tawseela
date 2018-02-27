@@ -13,6 +13,7 @@ let URL_IMAGE_PREFIX = "http://haseboty.com/Tawseela/"
 let SERVICE_URL_PREFIX = "http://haseboty.com/Tawseela/"
 let ACCOUNT_ID = 1
 var GOOGLE_PLACES_API_KEY = "AIzaSyCTV_ohoqCYjpSfjtbt5WNbt0SsRAFrlek"
+let NC = NotificationCenter.default
 
 var CURRENT_USER:UserRecord? {
     didSet{
@@ -24,6 +25,7 @@ var CART_ORDERS:[OrderDetails] = [] {
     didSet{
         debugPrint("Order Set")
         saveOrders()
+        NC.post(name: Notification.Name("cartChanged"), object: nil)
     }
 }
 
@@ -185,10 +187,9 @@ enum VendingMachineError:Error {
 extension Date{
     func getStringFromDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "E, d MMM yyyy HH:mm:ss"
+        formatter.dateFormat = "dd/mm/yyyy HH:mm:ss"
         return formatter.string(from: self as Date)
     }
-    
 }
 
 extension UIColor {

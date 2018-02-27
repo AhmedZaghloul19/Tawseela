@@ -12,6 +12,9 @@ import UIKit
  Base View Controller For All Controllers of the app.
  ````
  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+ @IBOutlet weak var menuButton: UIBarButtonItem!
+ @IBOutlet weak var cartBtn:UIBarButtonItem!
+
  lazy var errorView = ConnectionErrorView()
  
  ````
@@ -27,8 +30,10 @@ class BaseViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var cartButton: UIBarButtonItem!
 
     lazy var errorView = ConnectionErrorView()
+    let notificationButton = SSBadgeButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +49,22 @@ class BaseViewController: UIViewController {
             leftGesture.direction = .left
             self.view.addGestureRecognizer(leftGesture)
         }
+
+        notificationButton.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        notificationButton.setImage(UIImage(named: "shopping-store-cart-")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        notificationButton.addTarget(self, action: #selector(cartTapped), for: .touchUpInside)
+        notificationButton.badge = CART_ORDERS.count != 0 ? "\(CART_ORDERS.count)" : nil
+        self.navigationItem.leftBarButtonItems?.first?.customView = notificationButton
         
+        NC.addObserver(self, selector: #selector(cartChanged), name: Notification.Name("cartChanged"), object: nil)
+    }
+    
+    @IBAction func cartTapped(){
+        self.performSegue(withIdentifier: "openCart", sender: self)
+    }
+    
+    @objc func cartChanged() {
+        notificationButton.badge = CART_ORDERS.count != 0 ? "\(CART_ORDERS.count)" : nil
     }
     
     func sideMenuConfigration(){

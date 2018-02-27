@@ -51,10 +51,6 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
                     self.activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 }
-            } else {
-                DispatchQueue.main.async {
-                    self.errorView.isHidden = false
-                }
             }
         })
     }

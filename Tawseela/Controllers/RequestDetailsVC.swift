@@ -66,11 +66,20 @@ class RequestsDetailsVC: BaseViewController ,UITableViewDelegate,UITableViewData
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemCoordinate = CLLocationCoordinate2D(latitude: Double(orderDetails[indexPath.row].lat ?? 0), longitude: Double(orderDetails[indexPath.row].lng ?? 0))
+        
+        self.getDirectionsTo(coordinates: itemCoordinate)
+    }
+    
     @IBAction func confirmBtnTapped() {
         if !(offerTextfield.text?.isEmpty)! {
             self.channelRef.child(self.order.id!).child("driver_offers").child((CURRENT_USER?.mobile!)!).setValue(self.offerTextfield.text!, withCompletionBlock: { (error, ref) in
                 if error == nil {
-                    self.showAlertWithTitle(title: "Success", message: "Offer Set Successfully")
+                    let alert = UIAlertController(title: "Success", message: "Offer Set Successfully", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                        self.backTapped(nil)
+                    }))
                 }
             })
         }
@@ -92,5 +101,18 @@ class RequestsDetailsVC: BaseViewController ,UITableViewDelegate,UITableViewData
         mapItem.openInMaps(launchOptions: options)
     }
     
+    func getDirectionsTo(coordinates:CLLocationCoordinate2D) {
+        let regionDistance:CLLocationDistance = 1000
+
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = ((self.order?.del_address!)!)
+        mapItem.openInMaps(launchOptions: options)
+    }
 }
 

@@ -54,7 +54,6 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
                 self.places.append(place)
             }
             self.placesTypeBtn.setTitle(self.places[0].key!, for: .normal)
-//            self.getGooglePlaces()
             self.showPicker()
 
         }
@@ -76,32 +75,21 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                 }
-        })
-    }
+            })
+        }else{
+            self.getCurrentPlace()
+        }
     }
     
     func getCurrentPlace() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        if CLLocationManager.locationServicesEnabled()
-//        {
-//
-            let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
-            if status == CLAuthorizationStatus.notDetermined
-            {
-                locationManager.requestWhenInUseAuthorization()
-            }else{
-                
-            }
+
+//        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
+        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         self.locationManager.startUpdatingLocation()
         currentCoordinate = locationManager.location?.coordinate
-//        self.getGooglePlaces()
-//        } else {
-//            
-//            print("locationServices disabled")
-//            return
-//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

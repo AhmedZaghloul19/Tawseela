@@ -67,41 +67,52 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     }
     
     @IBAction func doneTapped(){
-        if destinationCoordinate == nil {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "", message: "Set your pickup location first", preferredStyle: .alert)
+        if CART_ORDERS.count != 0 {
+            if destinationCoordinate == nil {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "", message: "Set your pickup location first", preferredStyle: .alert)
 
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                    self.pickPlace()
-                }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }else{
-            let newOrderContent:[String : Any] = [
-                "date": Date().getStringFromDate(),
-                "del_address": destinationAddress,
-                "del_lat":destinationCoordinate.latitude,
-                "del_lng":destinationCoordinate.longitude,
-                "state": "جاري الطلب",
-                "user_phone": (CURRENT_USER?.mobile!)!,
-                ]
-            let newOrderRef = self.channelRef.childByAutoId()
-            newOrderRef.setValue(newOrderContent)
-            
-            for order in CART_ORDERS {
-                let orderDetailsContent:[String:Any] = ["address":order.address!,
-                    "details":order.details!,
-                    "lat":order.lat!,
-                    "lng":order.lng!,
-                    "name":order.name!,
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        self.pickPlace()
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }else{
+                let newOrderContent:[String : Any] = [
+                    "date": Date().getStringFromDate(),
+                    "del_address": destinationAddress,
+                    "del_lat":destinationCoordinate.latitude,
+                    "del_lng":destinationCoordinate.longitude,
+                    "state": "جاري الطلب",
+                    "user_phone": (CURRENT_USER?.mobile!)!,
                     ]
-                newOrderRef.child("order_details").childByAutoId().setValue(orderDetailsContent)
+                let newOrderRef = self.channelRef.childByAutoId()
+                newOrderRef.setValue(newOrderContent)
+                
+                for order in CART_ORDERS {
+                    let orderDetailsContent:[String:Any] = ["address":order.address!,
+                        "details":order.details!,
+                        "lat":order.lat!,
+                        "lng":order.lng!,
+                        "name":order.name!,
+                        ]
+                    newOrderRef.child("order_details").childByAutoId().setValue(orderDetailsContent)
+                }
+                CART_ORDERS.removeAll()
+                userData.removeObject(forKey: "cart_orders")
+                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Success", message: "Your Order Request has been sent successfully", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        self.backTapped(nil)
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
             }
-            CART_ORDERS.removeAll()
-            userData.removeObject(forKey: "cart_orders")
-            self.tableView.reloadData()
-            self.showAlertWithTitle(title: "Success", message: "Your Order Request has been sent successfully")
         }
     }
     

@@ -14,6 +14,8 @@ import FirebaseMessaging
 import FirebaseInstanceID
 import FirebaseMessaging
 import UserNotifications
+import Kingfisher
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterDelegate, MessagingDelegate{
@@ -22,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        IQKeyboardManager.sharedManager().enable = true
+
+        // 200 MB
+        ImageCache.default.maxDiskCacheSize = UInt(200 * 1024 * 1024)
+        // 3 days
+        ImageCache.default.maxCachePeriodInSecond = TimeInterval(60 * 60 * 24 * 3)
         
         GMSPlacesClient.provideAPIKey(GOOGLE_PLACES_API_KEY)
         GMSServices.provideAPIKey(GOOGLE_PLACES_API_KEY)

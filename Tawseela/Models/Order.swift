@@ -33,7 +33,6 @@ class Order  {
             }
             self.driver_phone = data.getValueForKey(key: "driver_phone", callback: "")
             self.price = data.getValueForKey(key: "price", callback: "")
-            print(data.getValueForKey(key: "state", callback: "جاري الطلب"))
             self.state = State(rawValue: data.getValueForKey(key: "state", callback: "جاري الطلب"))
             self.user_phone = data.getValueForKey(key: "user_phone", callback: "")
 //            self.order_details = OrderDetails(data: data.getValueForKey(key: "order_details", callback: [:]) as AnyObject)

@@ -39,6 +39,8 @@
 		042B5F6D203C9AD800139276 /* RequestProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042B5F6C203C9AD800139276 /* RequestProgressVC.swift */; };
 		042C38D8202E17DF00CF1F84 /* RatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042C38D7202E17DF00CF1F84 /* RatingCell.swift */; };
 		045EDF30203723A000233E67 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045EDF2F203723A000233E67 /* TabBarVC.swift */; };
+		04C0422A20454FBD00B2ACFA /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C0422920454FBD00B2ACFA /* BadgeButton.swift */; };
+		04C0422D2045973600B2ACFA /* Localized.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04C0422C2045973600B2ACFA /* Localized.strings */; };
 		309F0819EC20FD8A3DF83A0B /* Pods_Tawseela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,9 @@
 		042B5F6C203C9AD800139276 /* RequestProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProgressVC.swift; sourceTree = "<group>"; };
 		042C38D7202E17DF00CF1F84 /* RatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCell.swift; sourceTree = "<group>"; };
 		045EDF2F203723A000233E67 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		04C0422920454FBD00B2ACFA /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
+		04C0422B204596F500B2ACFA /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		04C0422C2045973600B2ACFA /* Localized.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localized.strings; sourceTree = "<group>"; };
 		31AADBCFA0D3ADB0B5D2B513 /* Pods_Tawseela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tawseela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D172F65875776527E25DC98 /* Pods-Tawseela.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.release.xcconfig"; sourceTree = "<group>"; };
 		5511D63B243FB45AA186EA59 /* Pods-Tawseela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tawseela.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tawseela/Pods-Tawseela.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 				04246A79202B9C6E00692641 /* AppDelegate.swift */,
 				0426A527202C48330074795A /* Extensions.swift */,
 				0426A53F202C68B90074795A /* RequestManager.swift */,
+				04C0422C2045973600B2ACFA /* Localized.strings */,
 				0429B886202CA0AF000F8A0B /* Models */,
 				0426D6D0202FB48800FA4896 /* Views */,
 				0429B887202CA0BC000F8A0B /* Controllers */,
@@ -138,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				042C38D7202E17DF00CF1F84 /* RatingCell.swift */,
+				04C0422920454FBD00B2ACFA /* BadgeButton.swift */,
 				0429B885202CA098000F8A0B /* ConnectionErrorView */,
 			);
 			path = Views;
@@ -283,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C0422D2045973600B2ACFA /* Localized.strings in Resources */,
 				0426A536202C504E0074795A /* ConnectionErrorView.xib in Resources */,
 				04246A84202B9C6E00692641 /* LaunchScreen.storyboard in Resources */,
 				0426A530202C49070074795A /* GoogleService-Info.plist in Resources */,
@@ -343,6 +351,7 @@
 				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -358,6 +367,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -402,6 +412,7 @@
 				0426A532202C4D8E0074795A /* User.swift in Sources */,
 				04277402202DDB110002F448 /* SideMenuVC.swift in Sources */,
 				0426D6CF202F970300FA4896 /* CartVC.swift in Sources */,
+				04C0422A20454FBD00B2ACFA /* BadgeButton.swift in Sources */,
 				042B5F6B203C99C600139276 /* ChatViewController.swift in Sources */,
 				04285AA4203B2590001BCCE2 /* DeliveriesVC.swift in Sources */,
 				0426A53C202C5AD30074795A /* Place.swift in Sources */,
@@ -424,6 +435,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				04246A83202B9C6E00692641 /* Base */,
+				04C0422B204596F500B2ACFA /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -435,6 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -492,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

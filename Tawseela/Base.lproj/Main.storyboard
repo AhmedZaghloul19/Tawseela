@@ -163,7 +163,7 @@
                     <navigationItem key="navigationItem" title="Orders" id="YmS-6M-gcI">
                         <barButtonItem key="leftBarButtonItem" image="shopping-store-cart-" id="5UW-HT-vwD">
                             <connections>
-                                <segue destination="2yM-MP-SDO" kind="show" id="gWj-bd-p5x"/>
+                                <segue destination="2yM-MP-SDO" kind="show" identifier="openCart" id="gWj-bd-p5x"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="menu" id="rGE-o2-wc8"/>
@@ -272,7 +272,7 @@
                         <leftBarButtonItems>
                             <barButtonItem image="shopping-store-cart-" id="neO-n1-oct">
                                 <connections>
-                                    <segue destination="2yM-MP-SDO" kind="show" id="TTx-Op-NQt"/>
+                                    <segue destination="2yM-MP-SDO" kind="show" identifier="openCart" id="TTx-Op-NQt"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="add-pointer" id="41l-Ng-xCX">
@@ -285,6 +285,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="PoW-8p-35o" id="1Wh-NT-7Rm"/>
+                        <outlet property="cartButton" destination="neO-n1-oct" id="GSg-PL-S9b"/>
                         <outlet property="menuButton" destination="Ibh-58-uU1" id="szk-45-rBH"/>
                         <outlet property="placesTypeBtn" destination="gFe-k1-Rbx" id="Kfp-p5-i4g"/>
                         <outlet property="tableView" destination="nXq-Nd-Iwz" id="iWU-s3-9TV"/>
@@ -544,7 +545,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="mE5-ue-hLn">
                         <barButtonItem key="leftBarButtonItem" image="shopping-store-cart-" id="P2d-vp-j9t">
                             <connections>
-                                <segue destination="2yM-MP-SDO" kind="show" id="hLL-0E-fGC"/>
+                                <segue destination="2yM-MP-SDO" kind="show" identifier="openCart" id="hLL-0E-fGC"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
@@ -1120,6 +1121,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="VXr-v8-HTP" id="MqA-pX-m3v"/>
                         <outlet property="tableView" destination="eJ2-rL-qHA" id="kO2-cE-Ueo"/>
+                        <segue destination="gcq-gy-NBR" kind="show" identifier="OrderProgress" id="jwF-uS-lDo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9C-n1-whK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1187,7 +1189,7 @@
                     <navigationItem key="navigationItem" title="Orders" id="Jno-t7-5ta">
                         <barButtonItem key="leftBarButtonItem" image="shopping-store-cart-" id="giS-Kq-Hq7">
                             <connections>
-                                <segue destination="U5a-Tv-r2s" kind="show" id="MSH-i1-DtK">
+                                <segue destination="U5a-Tv-r2s" kind="show" identifier="openCart" id="MSH-i1-DtK">
                                     <nil key="action"/>
                                 </segue>
                             </connections>
@@ -1298,7 +1300,7 @@
                         <leftBarButtonItems>
                             <barButtonItem image="shopping-store-cart-" id="s7W-mb-x9R">
                                 <connections>
-                                    <segue destination="U5a-Tv-r2s" kind="show" id="Ac1-FC-Toa">
+                                    <segue destination="U5a-Tv-r2s" kind="show" identifier="openCart" id="Ac1-FC-Toa">
                                         <nil key="action"/>
                                     </segue>
                                 </connections>
@@ -1589,7 +1591,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="Dvd-5Y-lLg">
                         <barButtonItem key="leftBarButtonItem" image="shopping-store-cart-" id="0bv-pF-nAH">
                             <connections>
-                                <segue destination="U5a-Tv-r2s" kind="show" id="Jrw-4o-hH1">
+                                <segue destination="U5a-Tv-r2s" kind="show" identifier="openCart" id="Jrw-4o-hH1">
                                     <nil key="action"/>
                                 </segue>
                             </connections>
@@ -2110,6 +2112,9 @@
                                                                             <integer key="value" value="15"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <segue destination="llF-Es-lai" kind="show" identifier="OrderProgress" id="hTK-2U-Xs8"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -2837,22 +2842,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILH-Es-cMt">
-                                <rect key="frame" x="0.0" y="237" width="375" height="381"/>
+                                <rect key="frame" x="0.0" y="230.5" width="375" height="387.5"/>
                                 <connections>
                                     <segue destination="hlb-lC-dQv" kind="embed" identifier="ShowChat" id="YqX-s6-gYa"/>
                                 </connections>
                             </containerView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Szs-7s-5pv">
-                                <rect key="frame" x="16" y="72" width="343" height="157"/>
+                                <rect key="frame" x="16" y="72" width="343" height="150.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nf3-1M-Lu4">
-                                        <rect key="frame" x="16" y="8" width="311" height="141"/>
+                                        <rect key="frame" x="16" y="8" width="311" height="134.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="s0x-eg-H40">
-                                                <rect key="frame" x="180.5" y="0.0" width="130.5" height="75"/>
+                                                <rect key="frame" x="187" y="0.0" width="124" height="68.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pBh-ZL-FHj">
-                                                        <rect key="frame" x="0.0" y="17" width="39.5" height="41"/>
+                                                        <rect key="frame" x="0.0" y="14" width="39.5" height="41"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rir-3t-GpS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="19.5"/>
@@ -2868,8 +2873,8 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4CK-nb-023">
-                                                        <rect key="frame" x="55.5" y="0.0" width="75" height="75"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4CK-nb-023">
+                                                        <rect key="frame" x="55.5" y="0.0" width="68.5" height="68.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="4CK-nb-023" secondAttribute="height" multiplier="1:1" id="fDB-iL-gv3"/>
                                                         </constraints>
@@ -2877,7 +2882,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvC-BT-lev" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                <rect key="frame" x="197" y="83" width="114" height="20"/>
+                                                <rect key="frame" x="197" y="76.5" width="114" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="2Zo-ad-cn5"/>
                                                 </constraints>
@@ -2891,7 +2896,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4NN-3X-jm3">
-                                                <rect key="frame" x="2.5" y="111" width="308.5" height="30"/>
+                                                <rect key="frame" x="2.5" y="104.5" width="308.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9J-t4-pYb">
                                                         <rect key="frame" x="0.0" y="0.0" width="150.5" height="30"/>
@@ -2932,6 +2937,7 @@
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Nf3-1M-Lu4" secondAttribute="bottom" constant="8" id="Fw9-pi-N3H"/>
+                                    <constraint firstItem="4CK-nb-023" firstAttribute="width" secondItem="Szs-7s-5pv" secondAttribute="width" multiplier="0.2" id="HXn-uB-2qW"/>
                                     <constraint firstItem="4NN-3X-jm3" firstAttribute="width" secondItem="Szs-7s-5pv" secondAttribute="width" multiplier="0.9" id="Z0k-QT-kMY"/>
                                     <constraint firstAttribute="trailing" secondItem="Nf3-1M-Lu4" secondAttribute="trailing" constant="16" id="b8f-hT-BqQ"/>
                                     <constraint firstItem="Nf3-1M-Lu4" firstAttribute="top" secondItem="Szs-7s-5pv" secondAttribute="top" constant="8" id="hCa-hP-vkG"/>
@@ -2980,7 +2986,7 @@
             <objects>
                 <viewController id="hlb-lC-dQv" customClass="ChatViewController" customModule="Tawseela" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dQ5-zO-laZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="381"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="387.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IDf-HW-OQG"/>
@@ -3190,22 +3196,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHI-7H-e2V">
-                                <rect key="frame" x="0.0" y="237" width="375" height="381"/>
+                                <rect key="frame" x="0.0" y="230.5" width="375" height="387.5"/>
                                 <connections>
                                     <segue destination="Az4-Fr-eXw" kind="embed" identifier="ShowChat" id="0bG-Ot-OZL"/>
                                 </connections>
                             </containerView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-MX-jxi">
-                                <rect key="frame" x="16" y="72" width="343" height="157"/>
+                                <rect key="frame" x="16" y="72" width="343" height="150.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BID-f9-ORp">
-                                        <rect key="frame" x="16" y="8" width="311" height="141"/>
+                                        <rect key="frame" x="16" y="8" width="311" height="134.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Q97-3W-wak">
-                                                <rect key="frame" x="180.5" y="0.0" width="130.5" height="75"/>
+                                                <rect key="frame" x="187" y="0.0" width="124" height="68.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="IFy-in-Jpx">
-                                                        <rect key="frame" x="0.0" y="17" width="39.5" height="41"/>
+                                                        <rect key="frame" x="0.0" y="14" width="39.5" height="41"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="7H7-lJ-oOX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="19.5"/>
@@ -3221,8 +3227,8 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Swa-CZ-HQ0">
-                                                        <rect key="frame" x="55.5" y="0.0" width="75" height="75"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Swa-CZ-HQ0">
+                                                        <rect key="frame" x="55.5" y="0.0" width="68.5" height="68.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Swa-CZ-HQ0" secondAttribute="height" multiplier="1:1" id="Mgd-6R-dUU"/>
                                                         </constraints>
@@ -3230,7 +3236,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGr-vU-09y" customClass="FloatRatingView" customModule="FloatRatingView">
-                                                <rect key="frame" x="197" y="83" width="114" height="20"/>
+                                                <rect key="frame" x="197" y="76.5" width="114" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Kny-z0-rzN"/>
                                                 </constraints>
@@ -3244,7 +3250,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bxU-2u-172">
-                                                <rect key="frame" x="2.5" y="111" width="308.5" height="30"/>
+                                                <rect key="frame" x="2.5" y="104.5" width="308.5" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajc-vf-S5E">
                                                         <rect key="frame" x="0.0" y="0.0" width="150.5" height="30"/>
@@ -3289,6 +3295,7 @@
                                     <constraint firstAttribute="bottom" secondItem="BID-f9-ORp" secondAttribute="bottom" constant="8" id="MAd-Mi-RjX"/>
                                     <constraint firstItem="BID-f9-ORp" firstAttribute="leading" secondItem="Nxh-MX-jxi" secondAttribute="leading" constant="16" id="hka-wY-QWt"/>
                                     <constraint firstAttribute="trailing" secondItem="BID-f9-ORp" secondAttribute="trailing" constant="16" id="qR0-Dl-xB3"/>
+                                    <constraint firstItem="Swa-CZ-HQ0" firstAttribute="width" secondItem="Nxh-MX-jxi" secondAttribute="width" multiplier="0.2" id="wLg-9f-esZ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -3333,7 +3340,7 @@
             <objects>
                 <viewController id="Az4-Fr-eXw" customClass="ChatViewController" customModule="Tawseela" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rbl-DI-Vbt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="381"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="387.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AfA-23-Qnh"/>
@@ -3370,15 +3377,16 @@
         <image name="star" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VRZ-3H-jJp"/>
-        <segue reference="GLs-rg-KlC"/>
-        <segue reference="Krl-8Q-uQF"/>
+        <segue reference="hTK-2U-Xs8"/>
+        <segue reference="RYc-TT-vhY"/>
+        <segue reference="jwF-uS-lDo"/>
+        <segue reference="8bq-j6-hfz"/>
         <segue reference="aPa-vh-JTJ"/>
         <segue reference="zGT-za-CZT"/>
         <segue reference="moN-a7-70a"/>
         <segue reference="Jrw-4o-hH1"/>
         <segue reference="o06-f4-nQx"/>
-        <segue reference="hLL-0E-fGC"/>
+        <segue reference="TTx-Op-NQt"/>
         <segue reference="caN-Q1-qR1"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.76078431372549016" green="0.12941176470588234" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>

@@ -1,0 +1,180 @@
+/* 
+  Localized.strings
+  Tawseela
+
+  Created by Ahmed Zaghloul on 2/27/18.
+  Copyright © 2018 XWady. All rights reserved.
+*/
+//{
+//    "_name": "app_name",
+//    "__text": "Tawseela"
+//},
+//{
+//    "_name": "places",
+//    "__text": "places"
+//},
+//{
+//    "_name": "orders",
+//    "__text": "orders"
+//},
+//{
+//    "_name": "new_place",
+//    "__text": "Add new place"
+//},
+//{
+//    "_name": "send_oder",
+//    "__text": "Order now"
+//},
+//{
+//    "_name": "my_profile",
+//    "__text": "profile"
+//},
+//{
+//    "_name": "details_hint",
+//    "__text": "write in details what you want from this place,for example ( \" 2 Burger small + 1 Frieze Combo \" )"
+//},
+//{
+//    "_name": "notification",
+//    "__text": "notification"
+//},
+//{
+//    "_name": "details",
+//    "__text": "Details"
+//},
+//{
+//    "_name": "warnning_empty_order",
+//    "__text": "It`s empty order, Please choose your order first"
+//},
+//{
+//    "_name": "warnning_write_order",
+//    "__text": "You cant write empty order, Please write your order first"
+//},
+//{
+//    "_name": "reviewOrder",
+//    "__text": "Shopping Cart"
+//},
+//{
+//    "_name": "addedOrder",
+//    "__text": "The order has been added in Shopping cart !"
+//},
+//{
+//    "_name": "myPlace",
+//    "__text": "Delivery place"
+//},
+//{
+//    "_name": "delivery_place_warrning",
+//    "__text": "Please choose delivery place !"
+//},
+//{
+//    "_name": "price",
+//    "__text": "Delivery Price:"
+//},
+//{
+//    "_name": "confirm",
+//    "__text": "Confirm"
+//},
+//{
+//    "_name": "warnning_empty_price",
+//    "__text": "Enter price first !"
+//},
+//{
+//    "_name": "driver_offer_sent",
+//    "__text": "Your offer is sent to the client !"
+//},
+//{
+//    "_name": "cancel",
+//    "__text": "cancel order"
+//},
+//{
+//    "_name": "delivery",
+//    "__text": "Delivery"
+//},
+//{
+//    "_name": "wait_untill_confirm",
+//    "__text": "Please wait untill recive  your order request !"
+//},
+//{
+//    "_name": "gps_network_not_enabled",
+//    "__text": "location is not avaible in your device, please open it"
+//},
+//{
+//    "_name": "call",
+//    "__text": "call"
+//},
+//{
+//    "_name": "done",
+//    "__text": "deliverd"
+//},
+//{
+//    "_name": "change",
+//    "__text": "change"
+//},
+//{
+//    "_name": "enter_name",
+//    "__text": "Enter your name"
+//},
+//{
+//    "_name": "save",
+//    "__text": "save"
+//},
+//{
+//    "_name": "rate_user",
+//    "__text": "RATE AS USER"
+//},
+//{
+//    "_name": "rate_driver",
+//    "__text": "RATE AS DRIVER"
+//},
+//{
+//    "_name": "write_msg_chat",
+//    "__text": "Write your message here!"
+//},
+//{
+//    "_name": "login",
+//    "__text": "login"
+//},
+//{
+//    "_name": "yourPhone",
+//    "__text": "enter your phone"
+//},
+//{
+//    "_name": "reviewOrderChat",
+//    "__text": "review order"
+//},
+//{
+//    "_name": "joinUs",
+//    "__text": "Join our team"
+//},
+//{
+//    "_name": "shakawa",
+//    "__text": "Complaints and suggestions"
+//},
+//{
+//    "_name": "vistUs",
+//    "__text": "Vist us"
+//},
+//{
+//    "_name": "language",
+//    "__text": "Language"
+//},
+//{
+//    "u": "Logout",
+//    "_name": "logout"
+//},
+//{
+//    "_name": "orderIsCanceld",
+//    "__text": "Order is canceled !"
+//},
+//{
+//    "_name": "maxOffers",
+//    "__text": "order has maximum offers !"
+//},
+//{
+//    "_name": "notPaid",
+//    "__text": "Orders which is not paid yet:"
+//},
+//{
+//    "_name": "newOrder",
+//    "__text": "Add another order"
+//}
+

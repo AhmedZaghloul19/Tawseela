@@ -31,6 +31,16 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         observeOrders()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? RequestProgressVC ,let request = sender as? Request{
+            let order = Order(data: ["driver_phone":request.user_phone] as AnyObject)
+            order.user_phone = request.user_phone!
+            vc.order = order
+            vc.phone = request.user_phone!
+            vc.newChat = true
+        }
+    }
+    
     deinit {
         if let refHandle = channelRefHandle {
             channelRef.removeObserver(withHandle: refHandle)
@@ -70,12 +80,24 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     func didConfirmedOn(request: Request) {
+        //else if let vc = segue.destination as? RequestProgressVC {
+//        vc.order = order
+//    }
         let alert = UIAlertController(title: "Confirm Request", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            self.channelRef.child(self.orderID!).child("driver_phone").setValue(request.user_phone!)
-            self.channelRef.child(self.orderID!).child("state").setValue(State.Delivering.rawValue)
-            self.channelRef.child(self.orderID!).child("pay").setValue("no")
-            self.channelRef.child(self.orderID!).child("price").setValue(request.value!)
+            
+        self.channelRef.child(self.orderID!).child("driver_phone").setValue(request.user_phone!)
+        self.channelRef.child(self.orderID!).child("state").setValue(State.Delivering.rawValue)
+        self.channelRef.child(self.orderID!).child("pay").setValue("no")
+        self.channelRef.child(self.orderID!).child("price").setValue(request.value!, withCompletionBlock:{ (error, _) in
+            if (error == nil){
+                self.performSegue(withIdentifier: "OrderProgress", sender: request)
+            }else{
+                DispatchQueue.main.async {
+                    self.errorView.isHidden = false
+                }
+            }
+            })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: false)

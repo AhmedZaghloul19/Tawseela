@@ -15,6 +15,7 @@ target 'Tawseela' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   
+  pod 'IQKeyboardManagerSwift'
   pod 'JSQMessagesViewController'
   pod 'Alamofire'
   pod 'Localize-Swift'

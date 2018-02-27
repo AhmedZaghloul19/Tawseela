@@ -25,6 +25,8 @@ class ChatViewController: JSQMessagesViewController {
     private var messages: [JSQMessage] = []
     var orderID:String!
     var receiverName :String!
+    var newChat:Bool = false
+    var driver_phone:String?
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
@@ -37,6 +39,16 @@ class ChatViewController: JSQMessagesViewController {
         self.senderDisplayName = (CURRENT_USER?.mobile!)!
         observeMessages()
 
+        if newChat {
+            let itemRef = messageRef.child(orderID).child("chat").child(Date().getStringFromDate())
+            
+            let messageItem:[String:Any] = [
+                "phone": driver_phone ?? "0",
+                "order": 0,
+                "msg": "اهلا بك في خدمة الرسائل النصيه من تطبيق توصيله , سيتم توصيل طلبك فى اقرب وقت",
+                ]
+            itemRef.setValue(messageItem)
+        }
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
@@ -123,8 +135,8 @@ class ChatViewController: JSQMessagesViewController {
     private func observeMessages() {
 //        messageRef = channelRef!.child("messages")
         let messageQuery = messageRef.child(orderID).child("chat").queryLimited(toLast:25).queryOrdered(byChild: "order")
-        print(messageRef.key)
-        print(orderID)
+        
+        
         // We can use the observe method to listen for new
         // messages being written to the Firebase DB
         newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
