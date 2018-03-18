@@ -1,0 +1,51 @@
+/* 
+  Localized.strings
+  Tawseela
+
+  Created by Ahmed Zaghloul on 2/27/18.
+  Copyright © 2018 XWady. All rights reserved.
+*/
+"places" = "اماكن";
+"orders" = "طلباتي";
+"new_place" = "اضف مكان جديد";
+"send_oder" = "اطلب الان";
+"my_profile" = "انا";
+"details_hint" = "قم بكتابه ما تريد شرائه من هذا المكان, مثال ( \"2 برجر وسط + 1 بطاطس كبير\" )";
+"notification" = "تنبيهات";
+"details" = "التفاصيل";
+"warnning_empty_order" = "يجب اختيار ما تريده اولا";
+"warnning_write_order" = "يجب كتابه ما تريده اولا";
+"reviewOrder" = "عربة التسوق";
+"addedOrder" =  "تمت الاضافة الى عربة التسوق !";
+"myPlace" = "مكان التسليم";
+"delivery_place_warrning" = "برجاء اختيار مكان التسليم !";
+"price" = " ثمن التوصيل: ";
+"confirm" = "تاكيد";
+"warnning_empty_price" = "ادخل السعر اولا !";
+"driver_offer_sent" = "تم ارسال عرضك للعميل !";
+"cancel" = "الغاء الطلب";
+"delivery" = "توصيلاتي";
+"wait_untill_confirm" = "برجاء الانتظار حتى يتم استلام طلبك!";
+"gps_network_not_enabled" = "تحديد الموقع معطل فى جهازك , برجاء تفعيله";
+"call" = "اتصال";
+"done" = "تم التسليم";
+"change" = "تغير";
+"enter_name" = "ادخل اسمك";
+"save" = "حفظ";
+"rate_user" = "تقيمك كمستخدم";
+"rate_driver" = "تقيمك كطيار";
+"write_msg_chat" = "ادخل رسالتك هنا!";
+"login" = "تسجيل دخول";
+"yourPhone" = "قم بادخال رقمك للمتابعه";
+"reviewOrderChat" = "مراجعة الطلب";
+"joinUs" = "انضم الى فريقنا";
+"shakawa" = "الشكاوى و الاقتراحات";
+"vistUs" = "زورونا";
+"language" = "اللغه";
+"logout" = "تسجيل خروج";
+"orderIsCanceld" = "تم الغاء الطلب !";
+"maxOffers" = "تم الوصول الى الحد الاقصى من العروض لتوصيل الطلب !";
+"notPaid" = "عدد الطلبات التى لم يتم دفعها: ";
+"newOrder" = "اضافه طلب اخر";
+"rate" = "اضف تقييمك";
+

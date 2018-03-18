@@ -15,12 +15,12 @@ target 'Tawseela' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   
-  pod 'IQKeyboardManagerSwift'
   pod 'JSQMessagesViewController'
   pod 'Alamofire'
   pod 'Localize-Swift'
   pod 'Kingfisher'
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
   pod 'FloatRatingView'
-  
+  pod 'PopupDialog'
+
 end

@@ -19,12 +19,14 @@ class DeliveriesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
     var orders :[Order] = []
     var notPaid = 0 {
         didSet{
-            self.notPaidLabel.text = "Orders Which is not paid yet: \(self.notPaid)"
+            self.notPaidLabel.text = "notPaid".localized() + "\(self.notPaid)"
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "delivery".localized()
+        self.notPaidLabel.text = "notPaid".localized() + "\(self.notPaid)"
+
     }
     
     override func getData() {
@@ -50,7 +52,7 @@ class DeliveriesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSourc
                     let order = Order(data: snapshot.value as AnyObject)
                     order.id = snapshot.key
                     self.orders.append(order)
-                    if order.pay == "no"{
+                    if order.pay ?? "" == "no"{
                         self.notPaid += 1
                     }
                 }

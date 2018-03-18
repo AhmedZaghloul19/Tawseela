@@ -14,13 +14,19 @@
     
     @IBOutlet weak var subtitlesLabel: UILabel!
     @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var saveBtn:UIBarButtonItem!
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var driverRateBtn:UIButton!
     var imagePicker = UIImagePickerController()
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("users")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        self.driverRateBtn?.setTitle("rate_driver".localized(), for: .normal)
+        self.nameTextfield.placeholder = "enter_name".localized()
+        self.saveBtn.title = "save".localized()
+        self.title = "my_profile".localized()
     }
     
     override func getData() {
@@ -46,7 +52,7 @@
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? RatesVC {
+        if let vc = segue.destination as? RatesVC , segue.identifier  == "driverRate"{
             vc.ratesType = "driver_rate"
         }
     }
@@ -76,31 +82,9 @@
         let picker = imagePicker
 
         picker.allowsEditing = true
-        DispatchQueue.main.async {
-            let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            optionMenu.popoverPresentationController?.sourceView = self.navigationController?.navigationBar
-            let photoAction = UIAlertAction(title: "Camera Roll", style: .default, handler: { (action) in
-                picker.sourceType = UIImagePickerControllerSourceType.camera
-                picker.navigationBar.tintColor = appColor
-                self.present(picker, animated: true, completion: nil)
-            })
-            if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-                optionMenu.addAction(photoAction)
-            }
-            let galleryAction = UIAlertAction(title: "Photo Gallery", style: .default, handler: { (action) in
-                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                picker.navigationBar.tintColor = appColor
-                self.present(picker, animated: true, completion: nil)
-            })
-            
-            optionMenu.addAction(galleryAction)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            optionMenu.addAction(cancelAction)
-            
-            optionMenu.view.tintColor = appColor
-            self.present(optionMenu, animated: true, completion: nil)
-        }
+        picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        picker.navigationBar.tintColor = appColor
+        self.present(picker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

@@ -35,6 +35,8 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.inputToolbar.contentView.textView.placeHolder = "write_msg_chat".localized()
         self.senderId = (CURRENT_USER?.mobile!)!
         self.senderDisplayName = (CURRENT_USER?.mobile!)!
         observeMessages()
@@ -73,6 +75,11 @@ class ChatViewController: JSQMessagesViewController {
         if let refHandle = updatedMessageRefHandle {
             messageRef.removeObserver(withHandle: refHandle)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
     }
     
     // MARK: Collection view data source (and related) methods

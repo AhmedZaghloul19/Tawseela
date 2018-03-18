@@ -36,13 +36,20 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       self.title = "places".localized()
         self.placesTypeBtn.setTitle("restaurant", for: .normal)
         getCurrentPlace()
         placesPickerConfiguration()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCurrentPlace()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.locationManager.stopUpdatingLocation()
     }
     
     override func getData() {
@@ -84,10 +91,7 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     func getCurrentPlace() {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-
-//        let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         currentCoordinate = locationManager.location?.coordinate
     }
@@ -109,7 +113,7 @@ class PlacesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     
     fileprivate func enterOrderData(_ place: GooglePlacesItem) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Set Order", message: "Enter The Order Details", preferredStyle: .alert)
+            let alert = UIAlertController(title: "details".localized(), message: "details_hint".localized(), preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textfield) in
                 self.orderDetailsTextfield = textfield
             })
@@ -173,11 +177,13 @@ extension PlacesVC : UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     @IBAction func selectPlace(sender:UITextField) {
-        row = picker.selectedRow(inComponent: 0)
-        placeKey = places[row].value!
-        dismissBlackView()
-        self.getGooglePlaces()
-        self.placesTypeBtn.setTitle(places[row].key, for: .normal)
+        if places.count != 0 {
+            row = picker.selectedRow(inComponent: 0)
+            placeKey = places[row].value!
+            dismissBlackView()
+            self.getGooglePlaces()
+            self.placesTypeBtn.setTitle(places[row].key, for: .normal)
+        }
     }
     
     func showPicker(){

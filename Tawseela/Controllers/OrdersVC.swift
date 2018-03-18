@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import PopupDialog                            
 
 class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     
@@ -19,7 +20,7 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "orders".localized()
     }
     
     override func getData() {
@@ -94,6 +95,18 @@ class OrdersVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
             self.performSegue(withIdentifier: "OrderDetails", sender: orders[indexPath.row])
         }else{
             self.performSegue(withIdentifier: "OrderProgress", sender: orders[indexPath.row])
+        }
+    }
+    
+    func checkForRatingDriverWith(ID:String) {
+        self.navigationController?.tabBarController?.selectedIndex = 1
+        if ID != "" {
+            let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "RatingPopVC") as! RatingPopVC
+            vc.ratingForCustomer = false
+            vc.ID = ID
+            let popup = PopupDialog(viewController: vc, buttonAlignment: .vertical, transitionStyle: .bounceUp, preferredWidth: 340, gestureDismissal: false, hideStatusBar: false, completion: nil)
+            self.present(popup, animated: true, completion: nil)
         }
     }
 }

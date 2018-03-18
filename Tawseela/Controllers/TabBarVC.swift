@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import FirebaseMessaging
 
 class TabBarVC: UITabBarController {
     
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("orders")
+    private lazy var driversRef: DatabaseReference = Database.database().reference().child("drivers")
+
     private var channelRefHandle: DatabaseHandle?
     var orders :[Order] = []
     var requests:[Order] = []
@@ -19,7 +22,17 @@ class TabBarVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.items![0].title = "places".localized()
+        self.tabBar.items![1].title = "orders".localized()
 
+        if CURRENT_USER?.user?.type == .Driver {
+            self.tabBar.items![2].title = "notification".localized()
+            self.tabBar.items![3].title = "delivery".localized()
+            self.tabBar.items![4].title = "my_profile".localized()
+        self.driversRef.child((CURRENT_USER?.mobile!)!).setValue(Messaging.messaging().fcmToken)
+        }else{
+            self.tabBar.items![2].title = "my_profile".localized()
+        }
         observeOrders()
     }
     

@@ -29,7 +29,7 @@ import Firebase
 class RequestManager{
     static let defaultManager = RequestManager()
     private init (){}
-    private lazy var usersRef: DatabaseReference = Database.database().reference().child("users")
+    private lazy var driversRef: DatabaseReference = Database.database().reference().child("drivers")
     private let requestTimourInterval = 20.0
 
     /**
@@ -134,43 +134,54 @@ class RequestManager{
      
      - Returns: A closure contain boolean if there's error or not
      */
-    func sendPushNotificationsToDrivers(compilition : @escaping (_ error : Bool)->Void){
-        let mutableURLRequest = NSMutableURLRequest(url: URL(string: "http://haseboty.com/sendNotification/sendNotification.php")! ,
-                                                    cachePolicy: .useProtocolCachePolicy,
-                                                    timeoutInterval: requestTimourInterval)
-        mutableURLRequest.setBodyConfigrationWithMethod(method: "POST")
-        
-//        let postmsg = "user_name=\(email)&password=\(password)"
-//        mutableURLRequest.httpBody = postmsg.data(using: .utf8)
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: mutableURLRequest as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if let res:HTTPURLResponse = response as? HTTPURLResponse {
-                debugPrint(res.statusCode)
-                if (error != nil || res.statusCode != 200) {
-                    compilition(true)
-                    return
-                } else {
-                    let json: NSDictionary!
-                    do {
-                        json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as! NSDictionary
-                        debugPrint(json)
-                    } catch {
+    func sendPushNotificationsToDrivers(notification:AppNotification,compilition : @escaping (_ error : Bool)->Void){
+        getDriversTokens { (tokens) in
+         
+            let mutableURLRequest = NSMutableURLRequest(url: URL(string: "http://haseboty.com/sendNotification/sendNotification.php")! ,
+                                                        cachePolicy: .useProtocolCachePolicy,
+                                                        timeoutInterval: self.requestTimourInterval)
+            mutableURLRequest.setBodyConfigrationWithMethod(method: "POST")
+            
+            let postmsg = "reg_id[]=\(tokens)&title=\(notification.title!)&message=\(notification.message!)&kind=\(notification.kind!.rawValue)&data=\(notification.id!)"
+            mutableURLRequest.httpBody = postmsg.data(using: .utf8)
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: mutableURLRequest as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if let res:HTTPURLResponse = response as? HTTPURLResponse {
+                    debugPrint(res.statusCode)
+                    if (error != nil || res.statusCode != 200) {
                         compilition(true)
                         return
+                    } else {
+                        let json: NSDictionary!
+                        do {
+                            json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as! NSDictionary
+                            debugPrint(json)
+                        } catch {
+                            compilition(true)
+                            return
+                        }
+                        
                     }
-                    
+                }else {
+                    compilition(true)
                 }
-            }else {
-                compilition(true)
-            }
-            
-        })
-        dataTask.resume()
+                
+            })
+            dataTask.resume()
+        }
     }
     
-    //                    urlData.add("title", "تمت الموافقه");
-//    urlData.add("message", "تمت موافقه العميل على عرضك , للمتابعه اضغط هنا ..");
-//    urlData.add("kind", "new_order");
-//    urlData.add("data", orderId);
+    func getDriversTokens(complition: @escaping (_ tokens:[String])->Void){
+        driversRef.observeSingleEvent(of: .value) { (snapshot) in
+            var tokens:[String] = []
+            for element in snapshot.children {
+                let child = element as! DataSnapshot
+                let channelData = child.value as! String
 
+                tokens.append(channelData)
+            }
+            complition(tokens)
+        }
+    }
+    
 }

@@ -19,7 +19,8 @@ class NotificationsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "notification".localized()
+
     }
     
     override func getData() {

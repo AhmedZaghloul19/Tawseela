@@ -38,19 +38,15 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.constructConnectionErrorView()
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         getData()
-        if self.revealViewController() != nil {
+        if self.revealViewController() != nil && menuButton != nil{
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.sideMenuConfigration()
-        }else{
-            let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(backTapped))
-            leftGesture.direction = .left
-            self.view.addGestureRecognizer(leftGesture)
         }
 
-        notificationButton.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        notificationButton.frame = CGRect(x: 0, y: 0, width: 30, height: 20)
         notificationButton.setImage(UIImage(named: "shopping-store-cart-")?.withRenderingMode(.alwaysTemplate), for: .normal)
         notificationButton.addTarget(self, action: #selector(cartTapped), for: .touchUpInside)
         notificationButton.badge = CART_ORDERS.count != 0 ? "\(CART_ORDERS.count)" : nil
@@ -88,5 +84,14 @@ class BaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        CART_ORDERS.count != 0 ? notificationButton.playSwingAnimationWithoutZoomOut(WithDuration: 1, WithDelay: 2) : nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {
+            self.view.endEditing(true)
+            self.view.setNeedsLayout()
+        }
     }
 }

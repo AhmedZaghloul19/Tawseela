@@ -15,7 +15,7 @@ import FirebaseInstanceID
 import FirebaseMessaging
 import UserNotifications
 import Kingfisher
-import IQKeyboardManagerSwift
+import PopupDialog
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterDelegate, MessagingDelegate{
@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        IQKeyboardManager.sharedManager().enable = true
 
         // 200 MB
         ImageCache.default.maxDiskCacheSize = UInt(200 * 1024 * 1024)
@@ -39,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let controller = storyboard.instantiateViewController(withIdentifier: identifier)
         self.window?.rootViewController = controller
         
+         
         registerForPushNotifications()
         
         if #available(iOS 10.0, *) {
@@ -98,19 +98,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,UNUserNotificationCenterD
         let userInfo = response.notification.request.content.userInfo
         print(userInfo)
         
-//        let json: NSDictionary = convertToDictionary(text: userInfo["gcm.notification.object"] as! String)! as NSDictionary
-//        let recievedNotification = AppNotification(data: json)
-//
+//        let json: NSDictionary = convertToDictionary(text: userInfo["google.c.a.c_l"] as! String)! as NSDictionary
+        let recievedNotification = AppNotification(data: userInfo as AnyObject)
+        
+        switch recievedNotification.kind! {
+        case .driverRate:
+            if recievedNotification.id ?? "" != "" {
+                let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "RatingPopVC") as! RatingPopVC
+                vc.ratingForCustomer = false
+                vc.ID = recievedNotification.id ?? ""
+                let popup = PopupDialog(viewController: vc, buttonAlignment: .vertical, transitionStyle: .bounceUp, preferredWidth: 340, gestureDismissal: false, hideStatusBar: false, completion: nil)
+                DispatchQueue.main.async {
+                    self.window?.rootViewController?.present(popup, animated: true, completion: nil)
+                }
+            }
+        default:
+            break
+        }
+        
+        
+
 //        let mainStoryboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let tabbar : UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "rootHome") as! UITabBarController
-//        window?.rootViewController = tabbar
-//        tabbar.selectedIndex = 2
-//        let navVC = tabbar.viewControllers![2] as! UINavigationController
-//        let notificationVC = navVC.viewControllers[0] as! NotificationsVC
-//        notificationVC.selectedID = recievedNotification.object?.id!
-//        notificationVC.checkNotificationAction(target: recievedNotification.target!, tapped: recievedNotification)
-//        self.window?.makeKeyAndVisible()
-//        completionHandler()
+//        let identifier = userAlreadyExist() ? (CURRENT_USER?.user?.type! == .Customer ? "RootCustomerTabBar" : "RootDriverTabBar" ): "LoginVC"
+//        let tabbar : UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: identifier) as! UITabBarController
+//
+//        let navVC = tabbar.viewControllers![1] as! UINavigationController
+//        let ordersVC = navVC.viewControllers[0] as! OrdersVC
+//
+//        if recievedNotification.kind == NotificationType.driverRate {
+//            ordersVC.checkForRatingDriverWith(ID: recievedNotification.id ?? "")
+//        }
+        self.window?.makeKeyAndVisible()
+        completionHandler()
     }
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {        print(fcmToken)

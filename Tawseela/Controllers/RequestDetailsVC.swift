@@ -12,6 +12,8 @@ import MapKit
 
 class RequestsDetailsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     
+    @IBOutlet var embededViewBottomLayoutConstraint: NSLayoutConstraint?
+
     @IBOutlet weak var placeTitleLabel:UILabel!
     @IBOutlet weak var placeSubtitleLabel:UILabel!
     @IBOutlet weak var tableView:UITableView!
@@ -25,19 +27,53 @@ class RequestsDetailsVC: BaseViewController ,UITableViewDelegate,UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 100
-
-        self.placeTitleLabel.text = self.order.del_address!
+        tableView.estimatedRowHeight = 60
+        self.hideKeyboardWhenTappedAround()
+        
+        if order.del_address! != ""{
+            self.placeTitleLabel.text = self.order.del_address!
+        }else{
+            self.placeTitleLabel.text = self.order.requestedUser?.name!
+        }
         self.placeSubtitleLabel.text = self.order.user_phone!
         
         if self.offerTextfield == nil {
             self.confirmBtn.setTitle("Delivery Price: \(self.order.price!) LE", for: .normal) 
+        }else{
+            self.confirmBtn.setTitle("confirm".localized(), for: .normal)
+        }
+        
+        NotificationCenter.default.addObserver(self,selector: #selector(self.keyboardNotification(notification:)),name: NSNotification.Name.UIKeyboardWillChangeFrame,object: nil)
+
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let endFrameY = endFrame?.origin.y ?? 0
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            if endFrameY >= UIScreen.main.bounds.size.height {
+                self.embededViewBottomLayoutConstraint?.constant = 0.0
+            } else {
+                self.embededViewBottomLayoutConstraint?.constant = ((endFrame?.size.height) ?? 0.0) * -1
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
         }
     }
     
     override func getData() {
         super.getData()
-        
         self.channelRef.child(self.order.id!).child("order_details").observeSingleEvent(of: .value, with: { (snap) in
             self.activityIndicator.startAnimating()
             for detail in snap.children {
@@ -76,12 +112,15 @@ class RequestsDetailsVC: BaseViewController ,UITableViewDelegate,UITableViewData
         if !(offerTextfield.text?.isEmpty)! {
             self.channelRef.child(self.order.id!).child("driver_offers").child((CURRENT_USER?.mobile!)!).setValue(self.offerTextfield.text!, withCompletionBlock: { (error, ref) in
                 if error == nil {
-                    let alert = UIAlertController(title: "Success", message: "Offer Set Successfully", preferredStyle: .alert)
+                    let alert = UIAlertController(title: nil, message: "driver_offer_sent".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
                         self.backTapped(nil)
                     }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
+        }else{
+            self.showAlertWithTitle(title: nil, message: "warnning_empty_price".localized())
         }
     }
     

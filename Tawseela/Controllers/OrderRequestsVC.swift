@@ -13,6 +13,7 @@ import Kingfisher
 class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource,RequestDelegate{
     
     @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var cancelBtn:UIBarButtonItem!
     
     private lazy var channelRef: DatabaseReference = Database.database().reference().child("orders")
     private lazy var usersRef: DatabaseReference = Database.database().reference().child("users")
@@ -20,9 +21,10 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     private var channelRefHandle: DatabaseHandle?
     var driver_offers : [Request] = []
     var orderID:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.cancelBtn.title = "cancel".localized()
     }
     
     override func getData() {
@@ -35,11 +37,13 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
         if let vc = segue.destination as? RequestProgressVC ,let request = sender as? Request{
             let order = Order(data: ["driver_phone":request.user_phone] as AnyObject)
             order.user_phone = request.user_phone!
+            order.id = self.orderID!
             vc.order = order
             vc.phone = request.user_phone!
             vc.newChat = true
         }
     }
+    
     
     deinit {
         if let refHandle = channelRefHandle {
@@ -110,7 +114,7 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RatingCell
         cell.titleLabel.text = driver_offers[indexPath.row].user?.name!
-        cell.subtitleLabel.text = "Delivery Price : " + driver_offers[indexPath.row].value! + "£"
+        cell.subtitleLabel.text = "price".localized() + driver_offers[indexPath.row].value! + "£"
         cell.ratingView.rating = driver_offers[indexPath.row].driver_rate!
         let url = URL(string: (driver_offers[indexPath.row].user?.image!)!)
         cell.placeIcon.kf.setImage(with: url, placeholder: #imageLiteral(resourceName: "ic_avatarmdpi"), options: [.transition(ImageTransition.fade(1))], progressBlock: { receivedSize, totalSize in
@@ -122,8 +126,15 @@ class OrderRequestsVC: BaseViewController ,UITableViewDelegate,UITableViewDataSo
     }
     
     @IBAction func cancelOrder(){
-        self.channelRef.child(orderID!).removeValue()
-        self.backTapped(nil)
+        self.channelRef.child(orderID!).removeValue { (error, _) in
+            if (error == nil) {
+                let alert = UIAlertController(title: nil, message: "Order is canceled !".localized(), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                    self.backTapped(nil)
+                }))
+            }
+        }
+
     }
     
 }

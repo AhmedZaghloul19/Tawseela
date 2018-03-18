@@ -10,15 +10,22 @@ import UIKit
 import FloatRatingView
 import Firebase
 import Kingfisher
+import PopupDialog
 
-class RequestProgressVC: BaseViewController {
+class RequestProgressVC: BaseViewController ,RatingDelegate{
 
     @IBOutlet weak var titleLabel:UILabel!
     @IBOutlet weak var subtitleLabel:UILabel!
+    @IBOutlet weak var reviewBtn:UIButton!
+    @IBOutlet weak var doneBtn:UIBarButtonItem!
+
+    @IBOutlet weak var callBtn:UIButton!
     @IBOutlet weak var driverImageView:UIImageView!
     @IBOutlet weak var ratingView:FloatRatingView!
     
     private lazy var usersRef: DatabaseReference = Database.database().reference().child("users")
+    private lazy var ordersRef: DatabaseReference = Database.database().reference().child("orders")
+
     var order :Order!
     var driver:User? {
         didSet{
@@ -31,13 +38,18 @@ class RequestProgressVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.subtitleLabel.text = "Delivery Price: \(self.order.price!) LE"
+        self.hideKeyboardWhenTappedAround()
+        self.doneBtn?.title = "done".localized()
+        self.callBtn.setTitle("call".localized(), for: .normal)
+        self.reviewBtn.setTitle("reviewOrderChat".localized(), for: .normal)
+        self.subtitleLabel.text = "price".localized() + "\(self.order.price!) LE"
     }
     
     override func getData() {
         super.getData()
-        
+        if phone == nil {
+            self.navigationItem.rightBarButtonItem = nil
+        }
         self.usersRef.child(phone != nil ? ((phone == "" ? order.driver_phone! : phone)) : order.driver_phone!).observeSingleEvent(of: .value, with: { (userSnapshot) in
             let user = User(data: userSnapshot.value as AnyObject)
            
@@ -88,5 +100,30 @@ class RequestProgressVC: BaseViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         return self.driver != nil
     }
+    
+    @IBAction func deliveredTapped(){
+        ordersRef.child(self.order.id!).child("state").setValue(State.Done.rawValue);
+        ordersRef.child(self.order.id!).child("pay").setValue("no") { (error, _) in
+            if error == nil {
+                let storyboard  = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "RatingPopVC") as! RatingPopVC
+                vc.delegate = self
+                vc.ID = self.order.user_phone!
+                let popup = PopupDialog(viewController: vc, buttonAlignment: .vertical, transitionStyle: .bounceUp, preferredWidth: 340, gestureDismissal: false, hideStatusBar: false, completion: nil)
+                self.present(popup, animated: true, completion: nil)
 
+            }
+        }
+    }
+    
+    func didEndRating() {
+        self.gotoHome()
+    }
+    
+    func gotoHome() {
+        let iden = (CURRENT_USER?.user?.type! == .Customer ? "RootCustomer" : "RootDriver" )
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: iden)
+        self.present(vc, animated: true, completion: nil)
+    }
 }

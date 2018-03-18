@@ -21,7 +21,8 @@ class RatesVC: BaseViewController ,UITableViewDelegate,UITableViewDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 100
+        self.title = ratesType == "driver_rate" ? "rate_driver".localized() : "rate_user".localized()
     }
     
     

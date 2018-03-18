@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Localize_Swift
 
 let URL_IMAGE_PREFIX = "http://haseboty.com/Tawseela/"
 let SERVICE_URL_PREFIX = "http://haseboty.com/Tawseela/"
@@ -43,6 +44,15 @@ enum State:String{
     case Other
 }
 
+enum NotificationType :String{
+    case newOrder = "new_order";
+    case newOffer = "new_offer";
+    case userConfirmed = "offer_confirmed";
+    case driverRate = "order_done";
+    case newMessage = "new_msg";
+    case pay = "pay";
+}
+
 enum Role:String{
     case Driver = "driver"
     case Customer = "user"
@@ -60,6 +70,16 @@ extension NSMutableURLRequest{
     }
 }
 
+func convertToDictionary(text: String) -> [String: Any]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
+}
 
 extension UITableView {
     open override func awakeFromNib() {
@@ -187,7 +207,7 @@ enum VendingMachineError:Error {
 extension Date{
     func getStringFromDate() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/mm/yyyy HH:mm:ss"
+        formatter.dateFormat = "EEE, d MMM yyyy, HH:mm:ss"
         return formatter.string(from: self as Date)
     }
 }
@@ -230,7 +250,7 @@ extension NSDictionary {
 }
 
 extension UIViewController{
-    func showAlertWithTitle(title:String,message:String){
+    func showAlertWithTitle(title:String?,message:String){
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -260,6 +280,29 @@ extension UIViewController{
         }
     }
 
+}
+
+extension Localize{
+    
+    open class func isCurrentLanguageArabic() -> Bool{
+        return Localize.currentLanguage() == "ar"
+    }
+    open class func isCurrentLanguageEnglish() -> Bool{
+        return Localize.currentLanguage() == "en"
+    }
+    open class func setEnglishCurrentLanguage() {
+        Localize.setCurrentLanguage("en")
+    }
+    open class func setArabicCurrentLanguage() {
+        Localize.setCurrentLanguage("ar")
+    }
+    open class func getCurrentLanguage() -> AppLanguage{
+        if  Localize.isCurrentLanguageEnglish(){
+            return AppLanguage(rawValue: "en")!
+        }
+        return AppLanguage(rawValue: "ar")!
+    }
+    
 }
 
 extension UIImage {

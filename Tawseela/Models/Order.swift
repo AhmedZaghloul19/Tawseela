@@ -31,6 +31,7 @@ class Order  {
             for offer in offers {
                 driver_offers.append(offer)
             }
+            self.pay = data.getValueForKey(key: "pay", callback: "")
             self.driver_phone = data.getValueForKey(key: "driver_phone", callback: "")
             self.price = data.getValueForKey(key: "price", callback: "")
             self.state = State(rawValue: data.getValueForKey(key: "state", callback: "جاري الطلب"))

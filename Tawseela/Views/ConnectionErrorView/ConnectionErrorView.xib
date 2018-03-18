@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionErrorView" customModule="ClinicSystem" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionErrorView" customModule="Tawseela" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="zoM-7T-OnK"/>
                 <outlet property="errorLabel" destination="GA2-h4-DRa" id="t6I-Wo-vVh"/>
@@ -32,23 +32,22 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vbl-KE-yuM">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" red="0.76078431369999999" green="0.12941176469999999" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logomdpi" translatesAutoresizingMaskIntoConstraints="NO" id="GLg-KU-srE">
-                            <rect key="frame" x="75" y="288" width="225" height="91"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="No_internet" translatesAutoresizingMaskIntoConstraints="NO" id="GLg-KU-srE">
+                            <rect key="frame" x="75" y="293" width="225" height="81"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-sT-964">
-                            <rect key="frame" x="137.5" y="443" width="100" height="20"/>
+                            <rect key="frame" x="131.5" y="438" width="112" height="32"/>
                             <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
-                            <color key="tintColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="  Try Again" image="refresh-button">
-                                <color key="titleColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="  Try Again" image="reload"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS ... There's a Trouble in Connection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-h4-DRa">
-                            <rect key="frame" x="67" y="387" width="241" height="40"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOPS ... There's a Trouble in Connection" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA2-h4-DRa">
+                            <rect key="frame" x="67" y="382" width="241" height="40"/>
                             <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
-                            <color key="textColor" red="0.26274509800000001" green="0.74117647060000003" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -85,7 +84,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_logomdpi" width="234" height="91"/>
-        <image name="refresh-button" width="20" height="20"/>
+        <image name="No_internet" width="92" height="81"/>
+        <image name="reload" width="32" height="32"/>
     </resources>
 </document>

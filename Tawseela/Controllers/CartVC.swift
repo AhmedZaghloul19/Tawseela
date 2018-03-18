@@ -14,7 +14,7 @@ import Firebase
 class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     @IBOutlet weak var tableView:UITableView!
-    
+    @IBOutlet weak var doneBtn:UIBarButtonItem!
     var destinationCoordinate:CLLocationCoordinate2D!{
         didSet{
             self.getAddressFromLocation(center: self.destinationCoordinate)
@@ -25,9 +25,11 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "reviewOrder".localized()
+        doneBtn.title = "send_oder".localized()
         tableView.estimatedRowHeight = 90
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CART_ORDERS.count
@@ -70,7 +72,7 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         if CART_ORDERS.count != 0 {
             if destinationCoordinate == nil {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "", message: "Set your pickup location first", preferredStyle: .alert)
+                    let alert = UIAlertController(title: nil, message: "delivery_place_warrning".localized(), preferredStyle: .alert)
 
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                         self.pickPlace()
@@ -103,16 +105,23 @@ class CartVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
                 userData.removeObject(forKey: "cart_orders")
                 self.tableView.reloadData()
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Success", message: "Your Order Request has been sent successfully", preferredStyle: .alert)
-                    
+                    let alert = UIAlertController(title: nil, message: "wait_untill_confirm".localized(), preferredStyle: .alert)
+                    let notification = AppNotification(data: NSDictionary())
+                    notification.title = "طلب جديد"
+                    notification.message = "تم ارسال طلب جديد , للمتابعه اضغط هنا .."
+                    notification.kind = NotificationType(rawValue: "new_order")
+                    RequestManager.defaultManager.sendPushNotificationsToDrivers(notification:notification,compilition: { (error) in
+                        print(error)
+                    })
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                         self.backTapped(nil)
                     }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
 
             }
+        }else{
+            self.showAlertWithTitle(title: nil, message: "warnning_empty_order".localized())
         }
     }
     

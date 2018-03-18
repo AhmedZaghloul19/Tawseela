@@ -1,0 +1,49 @@
+/* 
+  Localized.strings
+  Tawseela
+
+  Created by Ahmed Zaghloul on 2/27/18.
+  Copyright © 2018 XWady. All rights reserved.
+*/
+"places" = "Places";
+"orders" = "Orders";
+"new_place" = "Add new place";
+"send_oder" = "Order Now";
+"my_profile" = "Profile";
+"details_hint" = "write in details what you want from this place,for example ( \" 2 Burger small + 1 Frieze Combo \" )";
+"notification" = "Notifications";
+"details" = "Details";
+"warnning_empty_order" = "It`s empty order, Please choose your order first";
+"warnning_write_order" = "You can't write empty order, Please write your order first";
+"reviewOrder" = "Shopping Cart";
+"addedOrder" = "The order has been added in Shopping cart !";
+"myPlace" = "Delivery place";
+"delivery_place_warrning" = "Please choose delivery place !";
+"price" = "Delivery Price: ";
+"confirm" = "Confirm";
+"warnning_empty_price" = "Enter price first !";
+"driver_offer_sent" = "Your offer is sent to the client !";
+"cancel" = "Cancel order";
+"delivery" = "Delivery";
+"wait_untill_confirm" = "Please wait untill recive  your order request !";
+"gps_network_not_enabled" = "location is not avaible in your device, please open it";
+"call" = "Call";
+"done" = "Deliverd";
+"change" = "Change";
+"enter_name" = "Enter your name";
+"save" = "Save";
+"rate_user" = "RATE AS USER";
+"rate_driver" = "RATE AS DRIVER";
+"write_msg_chat" = "Write your message here!";
+"login" = "Login";
+"yourPhone" = "enter your phone";
+"reviewOrderChat" = "review order";
+"joinUs" = "Join our team";
+"shakawa" = "Complaints and suggestions";
+"vistUs" = "Vist us";
+"language" = "Language";
+"logout" = "Logout";
+"orderIsCanceld" = "Order is canceled !";
+"maxOffers" = "order has maximum offers !";
+"notPaid" = "Orders which is not paid yet: ";
+"newOrder" = "Add another order";

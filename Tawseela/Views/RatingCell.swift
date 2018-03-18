@@ -20,6 +20,7 @@ class RatingCell: UITableViewCell {
     @IBOutlet weak var secondSubtitleLabel:UILabel!
     @IBOutlet weak var placeIcon:UIImageView!
     @IBOutlet weak var ratingView:FloatRatingView!
+    @IBOutlet weak var confirmBtn:UIButton!
     
     var delegate:RequestDelegate?
     var request:Request!
@@ -27,6 +28,7 @@ class RatingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.confirmBtn?.setTitle("confirm".localized(), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
